@@ -8,6 +8,7 @@ Two illustrated characters talk; the camera works inside one world, cutting to w
 [![License: MIT](https://img.shields.io/badge/license-MIT-3fa34d?style=flat-square)](LICENSE)
 [![Format: Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-1c2a4a?style=flat-square)](#install)
 [![Version](https://img.shields.io/badge/version-1.0.0-2f6fd6?style=flat-square)](CHANGELOG.md)
+[![Works with](https://img.shields.io/badge/works%20with-any%20Agent%20Skills%20agent-7a5af5?style=flat-square)](#install)
 
 <img src="docs/gallery/hero.jpg" alt="Eight frames from the example video: establishing shot of a coffee shop, push-in on a worried customer holding his phone, an insert of the payment screen, a hand slapping a fake QR sticker over the shop's QRIS stand, a map of Java with case pins, a rack focus from the phone to the shop sign, the menu price ringed against the phone's total, and the closing tagline with a high five" width="100%">
 
@@ -55,7 +56,7 @@ in any language your TTS voices support.
 
 | To... | You need |
 |---|---|
-| Build and render | An agent that loads skills (Claude Code, Codex, Gemini CLI, Cursor...), Node 18+, ffmpeg, and the HyperFrames skills: `npx hyperframes skills update general-video` |
+| Build and render | Any coding agent that can run shell commands and read files, Node 18+, ffmpeg, and the HyperFrames skills: `npx hyperframes skills update general-video` |
 | Voices with word timestamps | The [HeyGen CLI](https://developers.heygen.com/cli), signed in with your own account (`heygen auth login --oauth`). macOS and Linux run it natively; on Windows, install it in WSL and set `HEYGEN_WSL=1`. |
 | Carve the music under the voices | `@hyperframes/core` as a devDependency of the video project |
 | Audit the choreography | `@hyperframes/producer` as a devDependency of the video project |
@@ -64,7 +65,22 @@ Voices and music are generated or licensed under **your** account. None are ship
 
 ## Install
 
-### As a Claude Code plugin
+The skill follows the open **Agent Skills** layout (a folder with `SKILL.md`, `references/`,
+`scripts/`, `assets/`), so any agent that reads skills can use it.
+
+### Any agent (recommended)
+
+```bash
+npx skills add rifqiadit10/dialog-explainer-motion -g
+```
+
+The [skills CLI](https://skills.sh) detects the agents on your machine and links the skill into
+each one's skills folder. Pass `-a '*'` to install for every detected agent, or `-a <agent>` for one.
+Detected agents include Claude Code, GitHub Copilot, Gemini CLI, Antigravity, OpenCode,
+Windsurf, Qwen Code, and Command Code, plus the shared `~/.agents/skills` folder; see
+[skills.sh](https://skills.sh) for the current list.
+
+### Claude Code plugin
 
 ```
 /plugin marketplace add rifqiadit10/dialog-explainer-motion
@@ -76,11 +92,20 @@ Voices and music are generated or licensed under **your** account. None are ship
 ### Manual
 
 ```bash
-git clone https://github.com/rifqiadit10/dialog-explainer-motion ~/.claude/skills/dialog-explainer-motion
+git clone https://github.com/rifqiadit10/dialog-explainer-motion
 ```
 
-For other agents, copy the folder into the agent's skills directory or reference `SKILL.md` from
-your agent instructions file. Install one copy only.
+Then point your agent at it:
+
+| Agent | Where it goes |
+|---|---|
+| Agents with a skills folder | copy or link the folder into that folder (for example `~/.claude/skills/dialog-explainer-motion` or `~/.agents/skills/dialog-explainer-motion`) |
+| Agents that read `AGENTS.md` (Codex and others) | add: *"For two-character dialogue explainer videos, read and follow `<path>/dialog-explainer-motion/SKILL.md`."* |
+| Gemini CLI without skills | add the same line to `GEMINI.md` |
+| Cursor | add the same line as a rule in `.cursor/rules` |
+| Plain chat, no agent | paste `SKILL.md` and the relevant file from `references/` as instructions; the scripts need a shell |
+
+Install one copy per agent: two copies with the same skill name conflict.
 
 ## Example prompts
 

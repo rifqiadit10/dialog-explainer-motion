@@ -2,6 +2,7 @@
 name: dialog-explainer-motion
 description: Membuat video explainer berbentuk percakapan dua karakter ilustrasi (ngobrol, tanya-jawab, sketsa dialog) dengan suara TTS, lip-sync, subtitle karaoke, dan kamera yang bergerak di dalam satu dunia, bukan slide. Dibangun di atas HyperFrames (HTML + GSAP) dan dirender ke MP4, biasanya 9:16 untuk Reels/TikTok/Shorts. Gunakan skill ini setiap kali user meminta video edukasi, sosialisasi, iklan layanan masyarakat, atau penjelasan produk yang berbentuk dua orang/karakter ngobrol, "karakter animasi yang bicara", "video percakapan", "dua tokoh menjelaskan", atau ingin membuat video seperti contoh QRIS palsu, bahkan bila kata "dialog" tidak disebut. Juga gunakan untuk memperbaiki video dialog yang terasa statis atau seperti slide.
 license: MIT
+compatibility: Agent apa pun yang bisa menjalankan shell dan membaca file. Butuh Node 18+, ffmpeg, skill HyperFrames (npx hyperframes skills update general-video), dan HeyGen CLI yang sudah login untuk TTS (macOS/Linux langsung, Windows lewat WSL).
 metadata:
   author: Rifqi Aditya
   version: "1.0.0"
@@ -19,6 +20,10 @@ melayang di atas karakter. Mulut karakter bergerak mengikuti timestamp kata dari
 menyala per kata, dan musik dikarve di bawah suara.
 
 Contoh lengkap yang sudah lolos `check` dan dirender: `examples/qris-palsu/` (64,6 detik, 9:16).
+
+Skill ini tidak bergantung pada agent tertentu. Yang dibutuhkan hanya kemampuan menjalankan
+perintah shell, membaca dan menulis file, serta bertanya ke user. `<skill>` di bawah berarti
+folder tempat skill ini terpasang.
 
 ## Prinsip, dan alasannya
 
@@ -42,7 +47,7 @@ Contoh lengkap yang sudah lolos `check` dan dirender: `examples/qris-palsu/` (64
 
 | Kebutuhan | Untuk apa |
 |---|---|
-| Skill HyperFrames (`npx hyperframes skills update general-video`) | Kontrak composition, check, snapshot, render. Baca `/hyperframes` dan `/hyperframes-core` sebelum menulis HTML. |
+| Skill HyperFrames (`npx hyperframes skills update general-video`) | Kontrak composition, check, snapshot, render. Baca skill `hyperframes` dan `hyperframes-core` sebelum menulis HTML. |
 | Node 18+, ffmpeg | Script di `scripts/`, pengukuran audio |
 | HeyGen CLI, login OAuth oleh user | TTS dengan timestamp kata, katalog musik. macOS/Linux langsung; Windows lewat WSL (`HEYGEN_WSL=1`). Login dilakukan user sendiri. |
 | `@hyperframes/core` (devDependency project) | `hyperframes-audio/scripts/carve.mjs` untuk karve musik |
@@ -52,7 +57,7 @@ Samakan versi kedua package dengan pin CLI di `package.json` project.
 
 ## Alur kerja
 
-Jalankan lewat `/hyperframes` (intent layer menulis `BRIEF.md`, route `general-video`).
+Mulai dari skill `hyperframes` (intent layer menulis `BRIEF.md`, route `general-video`).
 Skill ini mengisi detail di tiap langkah.
 
 1. **Brief.** Topik dan pesan inti satu kalimat, platform/rasio, durasi, siapa dua karakternya
@@ -81,6 +86,8 @@ Skill ini mengisi detail di tiap langkah.
     (`references/audio.md`).
 11. **Verifikasi.** `npx hyperframes check .` sampai 0 error (layout dan kontras ikut), snapshot di
     setiap waktu shot dan lihat sendiri hasilnya, lalu jalankan animation map untuk mencari dead zone.
+    Bila agent tidak bisa melihat gambar, andalkan `check` dan animation map, lalu kirim contact sheet
+    snapshot ke user dan minta user mengeceknya sebelum lanjut.
 12. **Persetujuan dan render.** Buka `npx hyperframes preview --background`, tanyakan render atau
     revisi, render hanya setelah disetujui, lalu verifikasi file (ffprobe, loudness, beberapa frame).
 

@@ -11,8 +11,9 @@ janji uang pasti kembali, statistik karangan) bisa merugikan orang yang mengikut
    terverifikasi tidak masuk skrip.
 3. Buka sendiri halaman sumber untuk klaim inti, angka, nomor telepon, nama layanan, dan URL yang
    akan diucapkan atau ditampilkan. Ringkasan dari alat pengambil halaman bisa meleset.
-4. Riset bisa didelegasikan ke subagent di background sambil brief berjalan; minta laporan dengan
-   label terverifikasi/tidak dan daftar "aman dipakai" vs "jangan dipakai".
+4. Bila agent bisa menjalankan proses atau agent lain di latar belakang, riset bisa berjalan
+   bersamaan dengan brief. Minta laporan dengan label terverifikasi/tidak dan daftar
+   "aman dipakai" vs "jangan dipakai".
 
 ## `SOURCES.md`
 
