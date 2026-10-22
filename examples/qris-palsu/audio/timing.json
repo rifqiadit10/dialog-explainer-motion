@@ -1,0 +1,872 @@
+{
+  "total": 64.552,
+  "frames": [
+    {
+      "frame": 1,
+      "start": 0,
+      "end": 10.057,
+      "duration": 10.057,
+      "mid": 5.03
+    },
+    {
+      "frame": 2,
+      "start": 10.057,
+      "end": 15.473,
+      "duration": 5.416,
+      "mid": 12.77
+    },
+    {
+      "frame": 3,
+      "start": 15.473,
+      "end": 25.271,
+      "duration": 9.798,
+      "mid": 20.37
+    },
+    {
+      "frame": 4,
+      "start": 25.271,
+      "end": 33.452,
+      "duration": 8.181,
+      "mid": 29.36
+    },
+    {
+      "frame": 5,
+      "start": 33.452,
+      "end": 47.051,
+      "duration": 13.599,
+      "mid": 40.25
+    },
+    {
+      "frame": 6,
+      "start": 47.051,
+      "end": 56.7,
+      "duration": 9.649,
+      "mid": 51.88
+    },
+    {
+      "frame": 7,
+      "start": 56.7,
+      "end": 64.552,
+      "duration": 7.852,
+      "mid": 60.63
+    }
+  ],
+  "lines": [
+    {
+      "id": "f1-1-dika",
+      "frame": 1,
+      "speaker": "DIKA",
+      "text": "Sar, kayaknya aku kena tipu. Bayar kopi pakai QRIS, saldo kepotong, tapi kasirnya bilang uangnya nggak masuk.",
+      "audioStart": 0.244,
+      "duration": 7.079,
+      "speechStart": 0.5,
+      "speechEnd": 7.113,
+      "words": [
+        {
+          "word": "Sar,",
+          "start": 0.5,
+          "end": 0.948
+        },
+        {
+          "word": "kayaknya",
+          "start": 1.14,
+          "end": 1.567
+        },
+        {
+          "word": "aku",
+          "start": 1.609,
+          "end": 1.695
+        },
+        {
+          "word": "kena",
+          "start": 1.737,
+          "end": 1.908
+        },
+        {
+          "word": "tipu.",
+          "start": 1.951,
+          "end": 2.42
+        },
+        {
+          "word": "Bayar",
+          "start": 2.633,
+          "end": 2.889
+        },
+        {
+          "word": "kopi",
+          "start": 2.975,
+          "end": 3.188
+        },
+        {
+          "word": "pakai",
+          "start": 3.231,
+          "end": 3.444
+        },
+        {
+          "word": "Kris,",
+          "start": 3.487,
+          "end": 3.871
+        },
+        {
+          "word": "saldo",
+          "start": 4.041,
+          "end": 4.34
+        },
+        {
+          "word": "kepotong,",
+          "start": 4.383,
+          "end": 5.044
+        },
+        {
+          "word": "tapi",
+          "start": 5.279,
+          "end": 5.535
+        },
+        {
+          "word": "kasirnya",
+          "start": 5.577,
+          "end": 5.961
+        },
+        {
+          "word": "bilang",
+          "start": 6.004,
+          "end": 6.217
+        },
+        {
+          "word": "uangnya",
+          "start": 6.26,
+          "end": 6.644
+        },
+        {
+          "word": "nggak",
+          "start": 6.687,
+          "end": 6.943
+        },
+        {
+          "word": "masuk.",
+          "start": 6.943,
+          "end": 7.113
+        }
+      ]
+    },
+    {
+      "id": "f1-2-sari",
+      "frame": 1,
+      "speaker": "SARI",
+      "text": "Hah? Jangan-jangan QRIS palsu.",
+      "audioStart": 7.157,
+      "duration": 2.926,
+      "speechStart": 7.413,
+      "speechEnd": 9.857,
+      "words": [
+        {
+          "word": "Hah?",
+          "start": 7.413,
+          "end": 8.053
+        },
+        {
+          "word": "Jangan-jangan",
+          "start": 8.437,
+          "end": 9.077
+        },
+        {
+          "word": "Kris",
+          "start": 9.12,
+          "end": 9.333
+        },
+        {
+          "word": "palsu.",
+          "start": 9.418,
+          "end": 9.857
+        }
+      ]
+    },
+    {
+      "id": "f2-1-sari",
+      "frame": 2,
+      "speaker": "SARI",
+      "text": "Makanya, sebelum bayar, cek dulu nama merchant di layar HP kamu.",
+      "audioStart": 10.008,
+      "duration": 5.512,
+      "speechStart": 10.307,
+      "speechEnd": 15.273,
+      "words": [
+        {
+          "word": "Makanya,",
+          "start": 10.307,
+          "end": 11.053
+        },
+        {
+          "word": "sebelum",
+          "start": 11.288,
+          "end": 11.714
+        },
+        {
+          "word": "bayar,",
+          "start": 11.8,
+          "end": 12.376
+        },
+        {
+          "word": "cek",
+          "start": 12.611,
+          "end": 12.781
+        },
+        {
+          "word": "dulu",
+          "start": 12.867,
+          "end": 13.165
+        },
+        {
+          "word": "nama",
+          "start": 13.251,
+          "end": 13.549
+        },
+        {
+          "word": "merchant",
+          "start": 13.592,
+          "end": 14.018
+        },
+        {
+          "word": "di",
+          "start": 14.147,
+          "end": 14.317
+        },
+        {
+          "word": "layar",
+          "start": 14.36,
+          "end": 14.573
+        },
+        {
+          "word": "HP",
+          "start": 14.659,
+          "end": 14.914
+        },
+        {
+          "word": "kamu.",
+          "start": 14.957,
+          "end": 15.273
+        }
+      ]
+    },
+    {
+      "id": "f3-1-dika",
+      "frame": 3,
+      "speaker": "DIKA",
+      "text": "QRIS palsu gimana?",
+      "audioStart": 15.467,
+      "duration": 1.567,
+      "speechStart": 15.723,
+      "speechEnd": 16.986,
+      "words": [
+        {
+          "word": "Kris",
+          "start": 15.723,
+          "end": 15.936
+        },
+        {
+          "word": "palsu",
+          "start": 16.022,
+          "end": 16.32
+        },
+        {
+          "word": "gimana?",
+          "start": 16.363,
+          "end": 16.986
+        }
+      ]
+    },
+    {
+      "id": "f3-2-sari",
+      "frame": 3,
+      "speaker": "SARI",
+      "text": "Pelaku nempelin stiker QR miliknya di atas QRIS asli. Kamu scan, uangnya masuk ke rekening dia, bukan ke toko.",
+      "audioStart": 16.987,
+      "duration": 8.333,
+      "speechStart": 17.286,
+      "speechEnd": 25.071,
+      "words": [
+        {
+          "word": "Pelaku",
+          "start": 17.286,
+          "end": 17.712
+        },
+        {
+          "word": "nempelin",
+          "start": 17.755,
+          "end": 18.181
+        },
+        {
+          "word": "stiker",
+          "start": 18.224,
+          "end": 18.565
+        },
+        {
+          "word": "QR",
+          "start": 18.651,
+          "end": 18.992
+        },
+        {
+          "word": "miliknya",
+          "start": 19.078,
+          "end": 19.547
+        },
+        {
+          "word": "di",
+          "start": 19.59,
+          "end": 19.675
+        },
+        {
+          "word": "atas",
+          "start": 19.718,
+          "end": 19.973
+        },
+        {
+          "word": "Kris",
+          "start": 20.059,
+          "end": 20.229
+        },
+        {
+          "word": "asli.",
+          "start": 20.315,
+          "end": 21.04
+        },
+        {
+          "word": "Kamu",
+          "start": 21.382,
+          "end": 21.637
+        },
+        {
+          "word": "scan,",
+          "start": 21.68,
+          "end": 22.171
+        },
+        {
+          "word": "uangnya",
+          "start": 22.363,
+          "end": 22.875
+        },
+        {
+          "word": "masuk",
+          "start": 22.918,
+          "end": 23.173
+        },
+        {
+          "word": "ke",
+          "start": 23.259,
+          "end": 23.301
+        },
+        {
+          "word": "rekening",
+          "start": 23.344,
+          "end": 23.643
+        },
+        {
+          "word": "dia,",
+          "start": 23.686,
+          "end": 24.091
+        },
+        {
+          "word": "bukan",
+          "start": 24.283,
+          "end": 24.581
+        },
+        {
+          "word": "ke",
+          "start": 24.667,
+          "end": 24.709
+        },
+        {
+          "word": "toko.",
+          "start": 24.752,
+          "end": 25.071
+        }
+      ]
+    },
+    {
+      "id": "f4-1-dika",
+      "frame": 4,
+      "speaker": "DIKA",
+      "text": "Emang beneran ada?",
+      "audioStart": 25.265,
+      "duration": 1.489,
+      "speechStart": 25.521,
+      "speechEnd": 26.723,
+      "words": [
+        {
+          "word": "Emang",
+          "start": 25.521,
+          "end": 25.82
+        },
+        {
+          "word": "beneran",
+          "start": 25.862,
+          "end": 26.161
+        },
+        {
+          "word": "ada?",
+          "start": 26.204,
+          "end": 26.723
+        }
+      ]
+    },
+    {
+      "id": "f4-2-sari",
+      "frame": 4,
+      "speaker": "SARI",
+      "text": "Ada. Di Jakarta pernah ditemukan di kotak amal masjid. Di Bandung, pedagang pujasera juga kena.",
+      "audioStart": 26.724,
+      "duration": 6.74,
+      "speechStart": 27.023,
+      "speechEnd": 33.252,
+      "words": [
+        {
+          "word": "Ada.",
+          "start": 27.023,
+          "end": 27.577
+        },
+        {
+          "word": "Di",
+          "start": 27.876,
+          "end": 28.047
+        },
+        {
+          "word": "Jakarta",
+          "start": 28.089,
+          "end": 28.473
+        },
+        {
+          "word": "pernah",
+          "start": 28.516,
+          "end": 28.772
+        },
+        {
+          "word": "ditemukan",
+          "start": 28.815,
+          "end": 29.284
+        },
+        {
+          "word": "di",
+          "start": 29.327,
+          "end": 29.412
+        },
+        {
+          "word": "kotak",
+          "start": 29.455,
+          "end": 29.753
+        },
+        {
+          "word": "amal",
+          "start": 29.796,
+          "end": 30.052
+        },
+        {
+          "word": "masjid.",
+          "start": 30.137,
+          "end": 30.735
+        },
+        {
+          "word": "Di",
+          "start": 30.991,
+          "end": 31.119
+        },
+        {
+          "word": "Bandung,",
+          "start": 31.161,
+          "end": 31.609
+        },
+        {
+          "word": "pedagang",
+          "start": 31.716,
+          "end": 32.1
+        },
+        {
+          "word": "pujasera",
+          "start": 32.143,
+          "end": 32.612
+        },
+        {
+          "word": "juga",
+          "start": 32.74,
+          "end": 32.953
+        },
+        {
+          "word": "kena.",
+          "start": 32.996,
+          "end": 33.252
+        }
+      ]
+    },
+    {
+      "id": "f5-1-dika",
+      "frame": 5,
+      "speaker": "DIKA",
+      "text": "Terus ngeceknya gimana?",
+      "audioStart": 33.446,
+      "duration": 1.62,
+      "speechStart": 33.702,
+      "speechEnd": 35.023,
+      "words": [
+        {
+          "word": "Terus",
+          "start": 33.702,
+          "end": 33.958
+        },
+        {
+          "word": "ngeceknya",
+          "start": 34.001,
+          "end": 34.385
+        },
+        {
+          "word": "gimana?",
+          "start": 34.427,
+          "end": 35.023
+        }
+      ]
+    },
+    {
+      "id": "f5-2-sari",
+      "frame": 5,
+      "speaker": "SARI",
+      "text": "Satu, nama merchant harus sama dengan nama toko. Dua, cek nominalnya. Tiga, kalau ada QR ditempel di atas QR lain, jangan bayar. Ragu? Tanya kasir.",
+      "audioStart": 35.067,
+      "duration": 12.016,
+      "speechStart": 35.323,
+      "speechEnd": 46.851,
+      "words": [
+        {
+          "word": "Satu,",
+          "start": 35.323,
+          "end": 36.006
+        },
+        {
+          "word": "nama",
+          "start": 36.262,
+          "end": 36.56
+        },
+        {
+          "word": "merchant",
+          "start": 36.603,
+          "end": 36.944
+        },
+        {
+          "word": "harus",
+          "start": 37.072,
+          "end": 37.328
+        },
+        {
+          "word": "sama",
+          "start": 37.414,
+          "end": 37.584
+        },
+        {
+          "word": "dengan",
+          "start": 37.712,
+          "end": 37.968
+        },
+        {
+          "word": "nama",
+          "start": 38.011,
+          "end": 38.224
+        },
+        {
+          "word": "toko.",
+          "start": 38.267,
+          "end": 38.8
+        },
+        {
+          "word": "Dua,",
+          "start": 39.035,
+          "end": 39.632
+        },
+        {
+          "word": "cek",
+          "start": 39.846,
+          "end": 40.016
+        },
+        {
+          "word": "nominalnya.",
+          "start": 40.102,
+          "end": 40.976
+        },
+        {
+          "word": "Tiga,",
+          "start": 41.211,
+          "end": 41.702
+        },
+        {
+          "word": "kalau",
+          "start": 41.894,
+          "end": 42.15
+        },
+        {
+          "word": "ada",
+          "start": 42.192,
+          "end": 42.32
+        },
+        {
+          "word": "QR",
+          "start": 42.448,
+          "end": 42.747
+        },
+        {
+          "word": "ditempel",
+          "start": 42.832,
+          "end": 43.302
+        },
+        {
+          "word": "di",
+          "start": 43.344,
+          "end": 43.43
+        },
+        {
+          "word": "atas",
+          "start": 43.472,
+          "end": 43.686
+        },
+        {
+          "word": "QR",
+          "start": 43.814,
+          "end": 44.07
+        },
+        {
+          "word": "lain,",
+          "start": 44.112,
+          "end": 44.411
+        },
+        {
+          "word": "jangan",
+          "start": 44.539,
+          "end": 44.795
+        },
+        {
+          "word": "bayar.",
+          "start": 44.838,
+          "end": 45.328
+        },
+        {
+          "word": "Ragu?",
+          "start": 45.478,
+          "end": 46.054
+        },
+        {
+          "word": "Tanya",
+          "start": 46.246,
+          "end": 46.502
+        },
+        {
+          "word": "kasir.",
+          "start": 46.502,
+          "end": 46.851
+        }
+      ]
+    },
+    {
+      "id": "f6-1-dika",
+      "frame": 6,
+      "speaker": "DIKA",
+      "text": "Aku udah terlanjur bayar...",
+      "audioStart": 47.045,
+      "duration": 1.933,
+      "speechStart": 47.301,
+      "speechEnd": 48.935,
+      "words": [
+        {
+          "word": "Aku",
+          "start": 47.301,
+          "end": 47.642
+        },
+        {
+          "word": "udah",
+          "start": 47.685,
+          "end": 47.813
+        },
+        {
+          "word": "terlanjur",
+          "start": 47.856,
+          "end": 48.24
+        },
+        {
+          "word": "bayar...",
+          "start": 48.325,
+          "end": 48.935
+        }
+      ]
+    },
+    {
+      "id": "f6-2-sari",
+      "frame": 6,
+      "speaker": "SARI",
+      "text": "Segera hubungi bank atau e-wallet kamu, simpan bukti bayar, lalu lapor ke Indonesia Anti-Scam Centre OJK.",
+      "audioStart": 48.936,
+      "duration": 7.811,
+      "speechStart": 49.235,
+      "speechEnd": 56.5,
+      "words": [
+        {
+          "word": "Segera",
+          "start": 49.235,
+          "end": 49.618
+        },
+        {
+          "word": "hubungi",
+          "start": 49.661,
+          "end": 50.002
+        },
+        {
+          "word": "bank",
+          "start": 50.045,
+          "end": 50.216
+        },
+        {
+          "word": "atau",
+          "start": 50.344,
+          "end": 50.6
+        },
+        {
+          "word": "e-wallet",
+          "start": 50.643,
+          "end": 51.026
+        },
+        {
+          "word": "kamu,",
+          "start": 51.069,
+          "end": 51.603
+        },
+        {
+          "word": "simpan",
+          "start": 51.837,
+          "end": 52.221
+        },
+        {
+          "word": "bukti",
+          "start": 52.307,
+          "end": 52.562
+        },
+        {
+          "word": "bayar,",
+          "start": 52.605,
+          "end": 53.139
+        },
+        {
+          "word": "lalu",
+          "start": 53.373,
+          "end": 53.672
+        },
+        {
+          "word": "lapor",
+          "start": 53.715,
+          "end": 54.013
+        },
+        {
+          "word": "ke",
+          "start": 54.099,
+          "end": 54.184
+        },
+        {
+          "word": "Indonesia",
+          "start": 54.227,
+          "end": 54.568
+        },
+        {
+          "word": "Anti-Scam",
+          "start": 54.781,
+          "end": 55.506
+        },
+        {
+          "word": "Centre",
+          "start": 55.592,
+          "end": 55.89
+        },
+        {
+          "word": "OJK.",
+          "start": 55.976,
+          "end": 56.5
+        }
+      ]
+    },
+    {
+      "id": "f7-1-dika",
+      "frame": 7,
+      "speaker": "DIKA",
+      "text": "Oke, mulai sekarang cek nama dulu, baru bayar.",
+      "audioStart": 56.694,
+      "duration": 4.389,
+      "speechStart": 56.95,
+      "speechEnd": 60.845,
+      "words": [
+        {
+          "word": "Oke,",
+          "start": 56.95,
+          "end": 57.526
+        },
+        {
+          "word": "mulai",
+          "start": 57.803,
+          "end": 58.23
+        },
+        {
+          "word": "sekarang",
+          "start": 58.273,
+          "end": 58.699
+        },
+        {
+          "word": "cek",
+          "start": 58.87,
+          "end": 59.254
+        },
+        {
+          "word": "nama",
+          "start": 59.297,
+          "end": 59.51
+        },
+        {
+          "word": "dulu,",
+          "start": 59.553,
+          "end": 59.979
+        },
+        {
+          "word": "baru",
+          "start": 60.193,
+          "end": 60.448
+        },
+        {
+          "word": "bayar.",
+          "start": 60.491,
+          "end": 60.845
+        }
+      ]
+    },
+    {
+      "id": "f7-2-sari",
+      "frame": 7,
+      "speaker": "SARI",
+      "text": "Cek dulu, baru bayar!",
+      "audioStart": 60.889,
+      "duration": 1.907,
+      "speechStart": 61.145,
+      "speechEnd": 62.752,
+      "words": [
+        {
+          "word": "Cek",
+          "start": 61.145,
+          "end": 61.358
+        },
+        {
+          "word": "dulu,",
+          "start": 61.401,
+          "end": 61.785
+        },
+        {
+          "word": "baru",
+          "start": 61.87,
+          "end": 62.084
+        },
+        {
+          "word": "bayar!",
+          "start": 62.126,
+          "end": 62.752
+        }
+      ]
+    }
+  ]
+}

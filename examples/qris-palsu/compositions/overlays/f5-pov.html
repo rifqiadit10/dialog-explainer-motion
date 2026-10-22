@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>F5 POV: cara cek</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #f5o-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Archivo Black", sans-serif;
+          color: #1f2633;
+          pointer-events: none;
+        }
+        #f5o-chips {
+          position: absolute;
+          left: 64px;
+          top: 262px;
+          display: flex;
+          flex-direction: row;
+          gap: 12px;
+        }
+        .f5o-chip {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 10px 24px 10px 10px;
+          border-radius: 999px;
+          background: #fffdf8;
+          border: 4px solid #1f2633;
+          opacity: 0;
+        }
+        .f5o-chip .n {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: #1f2633;
+          color: #fff4e4;
+          font-size: 24px;
+        }
+        .f5o-chip .t {
+          font-size: 26px;
+          letter-spacing: -0.015em;
+        }
+        #f5o-phone {
+          position: absolute;
+          left: -40px;
+          top: 840px;
+          width: 580px;
+          height: 820px;
+          padding: 22px;
+          border-radius: 64px;
+          background: #1f2633;
+          box-shadow: 0 30px 60px rgba(31, 38, 51, 0.35);
+        }
+        #f5o-screen {
+          width: 100%;
+          height: 100%;
+          padding: 40px 44px 40px 84px;
+          border-radius: 44px;
+          background: #fffdf8;
+        }
+        #f5o-screen .k {
+          display: block;
+          font-family: "Space Mono", monospace;
+          font-size: 28px;
+          color: #5b6474;
+        }
+        #f5o-name {
+          position: relative;
+          display: inline-block;
+          margin-top: 6px;
+          font-family: "Space Mono", monospace;
+          font-weight: 700;
+          font-size: 34px;
+        }
+        #f5o-ring {
+          position: absolute;
+          left: -26px;
+          top: -14px;
+          width: calc(100% + 52px);
+          height: calc(100% + 28px);
+          overflow: visible;
+        }
+        #f5o-screen .rule {
+          height: 4px;
+          margin: 26px 0 22px;
+          background: #e8dcc8;
+        }
+        #f5o-amt {
+          position: relative;
+          isolation: isolate;
+          display: inline-block;
+          margin-top: 4px;
+          padding: 0 10px;
+          font-size: 64px;
+          letter-spacing: -0.02em;
+        }
+        #f5o-amt-mark {
+          position: absolute;
+          left: 0;
+          top: 16%;
+          width: 100%;
+          height: 72%;
+          border-radius: 8px;
+          background: rgba(255, 194, 74, 0.8);
+          transform-origin: 0 50%;
+          z-index: -1;
+        }
+        #f5o-thumb {
+          position: absolute;
+          left: -30px;
+          top: 1250px;
+          width: 120px;
+          height: 200px;
+          border-radius: 60px;
+          background: #b87a54;
+        }
+        #f5o-neq {
+          position: absolute;
+          left: 610px;
+          top: 860px;
+          width: 120px;
+          height: 120px;
+        }
+        #f5o-marks {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 1080px;
+          height: 1920px;
+          overflow: visible;
+        }
+      </style>
+
+      <div id="f5o-root" data-composition-id="f5o" data-width="1080" data-height="1920" data-duration="13.6">
+        <svg id="f5o-marks" viewBox="0 0 1080 1920" aria-hidden="true">
+          <!-- "Dua": ring on the menu price; "Tiga": ring on the sticker over the QRIS -->
+          <ellipse id="f5o-ring-price" cx="856" cy="590" rx="84" ry="52" fill="none" stroke="#2f9e6e" stroke-width="8" stroke-linecap="round" />
+          <ellipse id="f5o-ring-sticker" cx="540" cy="770" rx="186" ry="196" fill="none" stroke="#e4572e" stroke-width="10" stroke-linecap="round" />
+        </svg>
+        <div id="f5o-chips">
+          <div class="f5o-chip"><span class="n">1</span><span class="t">Nama cocok</span></div>
+          <div class="f5o-chip"><span class="n">2</span><span class="t">Nominal cocok</span></div>
+          <div class="f5o-chip"><span class="n">3</span><span class="t">Tanpa tempelan</span></div>
+        </div>
+        <div id="f5o-phone">
+          <div id="f5o-screen">
+            <span class="k">Bayar ke</span>
+            <span id="f5o-name">TOKO SERBA ADA 21
+              <svg id="f5o-ring" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M3 50 C2 16 38 4 62 6 C92 8 99 32 97 54 C95 86 60 97 34 94 C10 90 0 72 6 42" fill="none" stroke="#e4572e" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+              </svg>
+            </span>
+            <div class="rule"></div>
+            <span class="k">Total</span>
+            <span id="f5o-amt"><span id="f5o-amt-mark"></span>Rp25.000</span>
+          </div>
+        </div>
+        <div id="f5o-thumb"></div>
+        <svg id="f5o-neq" viewBox="0 0 92 92" aria-hidden="true">
+          <circle cx="46" cy="46" r="43" fill="#e4572e" />
+          <path d="M24 36 L68 36 M24 56 L68 56 M58 20 L34 72" stroke="#fffdf8" stroke-width="9" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <script>
+        (function () {
+          const D = 13.6;
+          const tl = gsap.timeline({ paused: true });
+          const draw = (sel, at, dur) => {
+            const p = document.querySelector(sel);
+            const len = p.getTotalLength() * 1.05;
+            p.style.strokeDasharray = len + " " + (len + 40);
+            tl.fromTo(p, { strokeDashoffset: len + 10 }, { strokeDashoffset: 0, duration: dur, ease: "power2.out" }, at);
+          };
+
+          // Over-the-shoulder: Dika's phone rises into the foreground (the world behind is soft).
+          tl.fromTo(["#f5o-phone", "#f5o-thumb"], { y: 520, rotation: -14 }, { y: 0, rotation: -8, duration: 0.6, ease: "power3.out" }, 0.05);
+          // Chips land on "Satu", "Dua", "Tiga" (waterfall-entry per item).
+          const AT = [1.87, 5.58, 7.76];
+          document.querySelectorAll("#f5o-chips .f5o-chip").forEach((chip, i) => {
+            tl.set(chip, { opacity: 1, y: -40 }, AT[i]);
+            tl.to(chip, { y: 0, duration: 0.2, ease: "power4.out" }, AT[i]);
+          });
+          // "nama merchant harus sama": ring the app's name, then rack focus to the shop sign.
+          draw("#f5o-ring path", 2.35, 0.6);
+          tl.to(["#f5o-phone", "#f5o-thumb"], { filter: "blur(6px)", duration: 0.35, ease: "power2.inOut" }, 3.5);
+          tl.fromTo("#f5o-neq", { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2)" }, 3.85);
+          tl.to("#f5o-neq", { scale: 0, opacity: 0, duration: 0.25, ease: "power2.in" }, 5.3);
+          // "Dua, cek nominalnya": phone sharp again, the amount is marked, the menu price is ringed.
+          tl.to(["#f5o-phone", "#f5o-thumb"], { filter: "blur(0px)", duration: 0.3, ease: "power2.inOut" }, 5.45);
+          tl.fromTo("#f5o-amt-mark", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 5.95);
+          draw("#f5o-ring-price", 6.35, 0.55);
+          tl.to("#f5o-ring-price", { opacity: 0, duration: 0.25, ease: "power2.in" }, 7.5);
+          // "Tiga": phone drops away, the camera lands on the stand, the sticker gets ringed.
+          tl.to(["#f5o-phone", "#f5o-thumb"], { y: 1150, opacity: 0, duration: 0.45, ease: "power3.in" }, 7.55);
+          draw("#f5o-ring-sticker", 8.45, 0.65);
+          tl.to("#f5o-ring-sticker", { opacity: 0, duration: 0.25, ease: "power2.in" }, 11.8);
+          tl.to("#f5o-root", { opacity: 0, duration: 0.2, ease: "power2.in" }, D - 0.22);
+
+          window.__timelines["f5o"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+node_modules/
+.hyperframes/
+renders/
+snaps/
+snaps*/
+boards/stills/
+audio/voice/
+audio/music/
+*.mp3
+*.wav
+*.mp4
+.DS_Store

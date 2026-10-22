@@ -1,0 +1,18 @@
+{
+  "name": "dialog-explainer",
+  "description": "Dialog Explainer: two-character dialogue explainer videos on HyperFrames.",
+  "owner": { "name": "Rifqi Aditya" },
+  "plugins": [
+    {
+      "name": "dialog-explainer",
+      "source": "./",
+      "displayName": "Dialog Explainer",
+      "description": "Two illustrated characters talk while the camera works inside one world. TTS voices with lip-sync, karaoke captions, verified facts, rendered to MP4 with HyperFrames.",
+      "version": "1.0.0",
+      "author": { "name": "Rifqi Aditya", "url": "https://github.com/rifqiadit10" },
+      "homepage": "https://github.com/rifqiadit10/dialog-explainer",
+      "license": "MIT",
+      "keywords": ["video", "explainer", "dialogue", "lip-sync", "hyperframes"]
+    }
+  ]
+}

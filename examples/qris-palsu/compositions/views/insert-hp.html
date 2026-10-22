@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert: layar HP</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #vins-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Archivo Black", sans-serif;
+          color: #1f2633;
+          background:
+            radial-gradient(ellipse 60% 40% at 50% 62%, rgba(255, 194, 74, 0.3) 0%, rgba(255, 244, 228, 0) 70%),
+            #fff4e4;
+        }
+        #vins-title {
+          position: absolute;
+          left: 64px;
+          top: 262px;
+          width: 880px;
+        }
+        #vins-title .l1 {
+          display: block;
+          font-size: 96px;
+          line-height: 0.98;
+          letter-spacing: -0.03em;
+        }
+        #vins-title .l2 {
+          display: block;
+          margin-top: 12px;
+          font-size: 68px;
+          line-height: 1;
+          letter-spacing: -0.025em;
+          color: #c8431f;
+        }
+        .vins-word {
+          display: inline-block;
+          opacity: 0;
+        }
+        #vins-phone {
+          position: absolute;
+          left: 150px;
+          top: 590px;
+          width: 780px;
+          height: 760px;
+          padding: 22px;
+          border-radius: 64px;
+          background: #1f2633;
+        }
+        #vins-screen {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          padding: 34px 48px;
+          border-radius: 44px;
+          background: #fffdf8;
+        }
+        #vins-screen .bar {
+          align-self: stretch;
+          font-family: "Space Mono", monospace;
+          font-weight: 700;
+          font-size: 28px;
+        }
+        #vins-screen .ok {
+          margin-top: 12px;
+          font-size: 36px;
+          color: #2a8a60;
+        }
+        #vins-screen .amt {
+          font-size: 76px;
+          letter-spacing: -0.02em;
+        }
+        #vins-screen .rule {
+          align-self: stretch;
+          height: 4px;
+          margin: 22px 0 20px;
+          background: #e8dcc8;
+        }
+        #vins-screen .to {
+          align-self: flex-start;
+          font-family: "Space Mono", monospace;
+          font-size: 30px;
+          color: #5b6474;
+        }
+        #vins-name {
+          position: relative;
+          isolation: isolate;
+          align-self: flex-start;
+          margin-top: 6px;
+          padding: 2px 14px;
+          font-family: "Space Mono", monospace;
+          font-weight: 700;
+          font-size: 48px;
+        }
+        #vins-mark {
+          position: absolute;
+          left: 0;
+          top: 14%;
+          width: 100%;
+          height: 76%;
+          border-radius: 8px;
+          background: rgba(255, 194, 74, 0.8);
+          transform-origin: 0 50%;
+          z-index: -1;
+        }
+        #vins-lens {
+          position: absolute;
+          left: 760px;
+          top: 1060px;
+          width: 220px;
+          height: 220px;
+        }
+      </style>
+
+      <div id="vins-root" data-composition-id="vins" data-width="1080" data-height="1920" data-duration="5.11">
+        <div id="vins-title">
+          <span class="l1">Cek nama merchant</span>
+          <span class="l2">sebelum bayar.</span>
+        </div>
+        <div id="vins-phone">
+          <div id="vins-screen">
+            <div class="bar">Pembayaran</div>
+            <svg width="120" height="120" viewBox="0 0 130 130" aria-hidden="true">
+              <circle cx="65" cy="65" r="62" fill="#2f9e6e" />
+              <path d="M36 67 L57 88 L96 45" fill="none" stroke="#fffdf8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <div class="ok">Pembayaran berhasil</div>
+            <div class="amt">Rp25.000</div>
+            <div class="rule"></div>
+            <div class="to">Bayar ke</div>
+            <div id="vins-name"><span id="vins-mark"></span>TOKO SERBA ADA 21</div>
+          </div>
+        </div>
+        <svg id="vins-lens" viewBox="0 0 190 190" aria-hidden="true">
+          <circle cx="80" cy="80" r="62" fill="rgba(255,253,248,0.35)" stroke="#e4572e" stroke-width="14" />
+          <path d="M126 126 L176 176" stroke="#e4572e" stroke-width="22" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <script>
+        (function () {
+          const D = 5.11;
+          const F = 1 / 60;
+          const tl = gsap.timeline({ paused: true });
+
+          // Continues the push-through: the phone lands from slightly too big.
+          tl.fromTo("#vins-phone", { scale: 1.3, opacity: 0.4 }, { scale: 1, opacity: 1, duration: 0.45, ease: "expo.out" }, 0);
+          // Title words cascade in (waterfall-entry).
+          const l1 = document.querySelector("#vins-title .l1");
+          const words = l1.textContent.trim().split(/\s+/);
+          l1.textContent = "";
+          const spans = words.map((w, i) => {
+            const s = document.createElement("span");
+            s.className = "vins-word";
+            s.textContent = w;
+            l1.appendChild(s);
+            if (i < words.length - 1) l1.appendChild(document.createTextNode(" "));
+            return s;
+          });
+          let t = 0.25;
+          spans.forEach((s, i) => {
+            const dur = i === 0 ? 0.2 : 0.15;
+            tl.set(s, { opacity: 1, y: i === 0 ? 80 : 50 }, t);
+            tl.to(s, { y: 0, duration: dur, ease: "power4.out" }, t);
+            t += dur - F;
+          });
+          tl.fromTo("#vins-title .l2", { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: "expo.out" }, t + 0.08);
+          // "nama merchant": lens glides in, marker sweeps the name.
+          tl.fromTo("#vins-lens", { x: 130, y: 60, rotation: 14, opacity: 0 }, { x: 0, y: 0, rotation: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 2.55);
+          tl.fromTo("#vins-mark", { scaleX: 0 }, { scaleX: 1, duration: 0.55, ease: "power2.out" }, 2.85);
+          // "layar HP kamu": the lens taps once.
+          tl.to("#vins-lens", { scale: 1.1, duration: 0.18, ease: "sine.inOut", yoyo: true, repeat: 1, transformOrigin: "40% 40%" }, 3.98);
+
+          window.__timelines["vins"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

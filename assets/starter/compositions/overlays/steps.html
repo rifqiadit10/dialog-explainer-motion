@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Langkah sebagai notifikasi (contoh)</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #steps-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Archivo Black", sans-serif;
+          color: #1f2633;
+          pointer-events: none;
+        }
+        #steps-stack {
+          position: absolute;
+          left: 64px;
+          top: 262px;
+          width: 880px;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        .steps-card {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          min-height: 128px;
+          padding: 18px 28px 18px 20px;
+          border-radius: 30px;
+          background: rgba(255, 253, 248, 0.97);
+          box-shadow: 0 16px 34px rgba(31, 38, 51, 0.18);
+          opacity: 0;
+        }
+        .steps-card .ic {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex: 0 0 88px;
+          width: 88px;
+          height: 88px;
+          border-radius: 24px;
+          color: #fffdf8;
+          font-size: 46px;
+        }
+        .steps-card .body {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .steps-card .t {
+          font-size: 42px;
+          line-height: 1.04;
+          letter-spacing: -0.02em;
+        }
+        .steps-card .url {
+          display: inline-block;
+          align-self: flex-start;
+          padding: 4px 14px 2px;
+          border-radius: 10px;
+          background: #1f2633;
+          color: #ffc24a;
+          font-family: "Space Mono", monospace;
+          font-weight: 700;
+          font-size: 28px;
+        }
+      </style>
+
+      <div id="steps-root" data-composition-id="steps" data-width="1080" data-height="1920" data-duration="5">
+        <div id="steps-stack">
+          <div class="steps-card"><span class="ic" style="background: #2e6e80">1</span><span class="body"><span class="t">Langkah pertama</span></span></div>
+          <div class="steps-card"><span class="ic" style="background: #b8761f">2</span><span class="body"><span class="t">Langkah kedua</span></span></div>
+          <div class="steps-card"><span class="ic" style="background: #e4572e">3</span><span class="body"><span class="t">Langkah ketiga</span><span class="url">situs.resmi.go.id</span></span></div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const D = 5;
+          const tl = gsap.timeline({ paused: true });
+          // Each step drops in like a phone notification on the word that names it.
+          const AT = [0.8, 1.8, 2.8];
+          document.querySelectorAll("#steps-stack .steps-card").forEach((card, i) => {
+            tl.fromTo(card, { y: -46, scale: 0.94, opacity: 0, transformOrigin: "50% 0%" }, { y: 0, scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, AT[i]);
+          });
+          tl.fromTo("#steps-stack .url", { scale: 0.6, opacity: 0, transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, 3.3);
+          tl.to("#steps-root", { opacity: 0, duration: 0.25, ease: "power2.in" }, D - 0.3);
+
+          window.__timelines["steps"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

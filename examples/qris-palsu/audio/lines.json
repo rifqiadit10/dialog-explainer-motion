@@ -1,0 +1,167 @@
+{
+  "language": "id",
+  "voices": {
+    "DIKA": "f5d7ba1dfec24c32bc3c372e210d41ed",
+    "SARI": "fdeb03e3681d462cb08a9ba7d7a50392"
+  },
+  "spoken": [
+    [
+      "QRIS",
+      "Kris"
+    ]
+  ],
+  "keywords": [
+    [
+      "nggak",
+      "masuk"
+    ],
+    [
+      "qris",
+      "palsu"
+    ],
+    [
+      "nama",
+      "merchant"
+    ],
+    [
+      "stiker"
+    ],
+    [
+      "rekening",
+      "dia"
+    ],
+    [
+      "kotak",
+      "amal",
+      "masjid"
+    ],
+    [
+      "pujasera"
+    ],
+    [
+      "sama"
+    ],
+    [
+      "nominalnya"
+    ],
+    [
+      "jangan",
+      "bayar"
+    ],
+    [
+      "tanya",
+      "kasir"
+    ],
+    [
+      "bank"
+    ],
+    [
+      "e-wallet"
+    ],
+    [
+      "bukti",
+      "bayar"
+    ],
+    [
+      "anti-scam",
+      "centre"
+    ],
+    [
+      "cek",
+      "nama",
+      "dulu"
+    ],
+    [
+      "cek",
+      "dulu"
+    ],
+    [
+      "baru",
+      "bayar"
+    ]
+  ],
+  "music": {
+    "src": "audio/music/bed.mp3",
+    "volume": 0.32
+  },
+  "lines": [
+    {
+      "id": "f1-1-dika",
+      "frame": 1,
+      "speaker": "DIKA",
+      "text": "Sar, kayaknya aku kena tipu. Bayar kopi pakai QRIS, saldo kepotong, tapi kasirnya bilang uangnya nggak masuk."
+    },
+    {
+      "id": "f1-2-sari",
+      "frame": 1,
+      "speaker": "SARI",
+      "text": "Hah? Jangan-jangan QRIS palsu."
+    },
+    {
+      "id": "f2-1-sari",
+      "frame": 2,
+      "speaker": "SARI",
+      "text": "Makanya, sebelum bayar, cek dulu nama merchant di layar HP kamu."
+    },
+    {
+      "id": "f3-1-dika",
+      "frame": 3,
+      "speaker": "DIKA",
+      "text": "QRIS palsu gimana?"
+    },
+    {
+      "id": "f3-2-sari",
+      "frame": 3,
+      "speaker": "SARI",
+      "text": "Pelaku nempelin stiker QR miliknya di atas QRIS asli. Kamu scan, uangnya masuk ke rekening dia, bukan ke toko."
+    },
+    {
+      "id": "f4-1-dika",
+      "frame": 4,
+      "speaker": "DIKA",
+      "text": "Emang beneran ada?"
+    },
+    {
+      "id": "f4-2-sari",
+      "frame": 4,
+      "speaker": "SARI",
+      "text": "Ada. Di Jakarta pernah ditemukan di kotak amal masjid. Di Bandung, pedagang pujasera juga kena."
+    },
+    {
+      "id": "f5-1-dika",
+      "frame": 5,
+      "speaker": "DIKA",
+      "text": "Terus ngeceknya gimana?"
+    },
+    {
+      "id": "f5-2-sari",
+      "frame": 5,
+      "speaker": "SARI",
+      "text": "Satu, nama merchant harus sama dengan nama toko. Dua, cek nominalnya. Tiga, kalau ada QR ditempel di atas QR lain, jangan bayar. Ragu? Tanya kasir."
+    },
+    {
+      "id": "f6-1-dika",
+      "frame": 6,
+      "speaker": "DIKA",
+      "text": "Aku udah terlanjur bayar..."
+    },
+    {
+      "id": "f6-2-sari",
+      "frame": 6,
+      "speaker": "SARI",
+      "text": "Segera hubungi bank atau e-wallet kamu, simpan bukti bayar, lalu lapor ke Indonesia Anti-Scam Centre OJK."
+    },
+    {
+      "id": "f7-1-dika",
+      "frame": 7,
+      "speaker": "DIKA",
+      "text": "Oke, mulai sekarang cek nama dulu, baru bayar."
+    },
+    {
+      "id": "f7-2-sari",
+      "frame": 7,
+      "speaker": "SARI",
+      "text": "Cek dulu, baru bayar!"
+    }
+  ]
+}

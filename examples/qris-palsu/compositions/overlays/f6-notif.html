@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>F6: langkah sebagai notifikasi</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #f6o-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Archivo Black", sans-serif;
+          color: #1f2633;
+          pointer-events: none;
+        }
+        #f6o-stack {
+          position: absolute;
+          left: 64px;
+          top: 262px;
+          width: 880px;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        .f6o-card {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          min-height: 128px;
+          padding: 18px 28px 18px 20px;
+          border-radius: 30px;
+          background: rgba(255, 253, 248, 0.97);
+          box-shadow: 0 16px 34px rgba(31, 38, 51, 0.18);
+          opacity: 0;
+        }
+        .f6o-card .ic {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex: 0 0 88px;
+          width: 88px;
+          height: 88px;
+          border-radius: 24px;
+          color: #fffdf8;
+          font-size: 46px;
+        }
+        .f6o-card .body {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .f6o-card .t {
+          font-size: 42px;
+          line-height: 1.04;
+          letter-spacing: -0.02em;
+        }
+        .f6o-card .url {
+          display: inline-block;
+          align-self: flex-start;
+          padding: 4px 14px 2px;
+          border-radius: 10px;
+          background: #1f2633;
+          color: #ffc24a;
+          font-family: "Space Mono", monospace;
+          font-weight: 700;
+          font-size: 28px;
+        }
+      </style>
+
+      <div id="f6o-root" data-composition-id="f6o" data-width="1080" data-height="1920" data-duration="9.65">
+        <div id="f6o-stack">
+          <div class="f6o-card"><span class="ic" style="background: #2e6e80">1</span><span class="body"><span class="t">Hubungi bank / e-wallet</span></span></div>
+          <div class="f6o-card"><span class="ic" style="background: #b8761f">2</span><span class="body"><span class="t">Simpan bukti bayar</span></span></div>
+          <div class="f6o-card"><span class="ic" style="background: #e4572e">3</span><span class="body"><span class="t">Lapor ke IASC OJK</span><span class="url">iasc.ojk.go.id</span></span></div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const D = 9.65;
+          const tl = gsap.timeline({ paused: true });
+          // Each step drops in like a phone notification as Sari names it: "hubungi", "simpan", "lapor".
+          const AT = [2.46, 4.64, 6.51];
+          document.querySelectorAll("#f6o-stack .f6o-card").forEach((card, i) => {
+            tl.fromTo(card, { y: -46, scale: 0.94, opacity: 0, transformOrigin: "50% 0%" }, { y: 0, scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, AT[i]);
+          });
+          tl.fromTo("#f6o-stack .url", { scale: 0.6, opacity: 0, transformOrigin: "0% 50%" }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, 7.05);
+          tl.to("#f6o-root", { opacity: 0, duration: 0.25, ease: "power2.in" }, D - 0.3);
+
+          window.__timelines["f6o"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

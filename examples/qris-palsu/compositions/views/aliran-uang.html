@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Diagram aliran uang</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #vflow-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Archivo Black", sans-serif;
+          color: #1f2633;
+          background:
+            radial-gradient(ellipse 60% 35% at 50% 50%, rgba(228, 87, 46, 0.12) 0%, rgba(255, 244, 228, 0) 70%),
+            #fff4e4;
+        }
+        #vflow-stage {
+          position: absolute;
+          inset: 0;
+        }
+        #vflow-stand {
+          position: absolute;
+          left: 64px;
+          top: 560px;
+          width: 360px;
+          height: 470px;
+          padding: 26px 30px;
+          border-radius: 30px;
+          background: #fffdf8;
+          border: 5px solid #1f2633;
+        }
+        #vflow-stand .brand {
+          font-size: 46px;
+          letter-spacing: -0.02em;
+        }
+        #vflow-qr-real {
+          display: block;
+          width: 250px;
+          height: 250px;
+          margin-top: 26px;
+        }
+        #vflow-fake {
+          position: absolute;
+          left: 108px;
+          top: 650px;
+          width: 290px;
+          height: 300px;
+          padding: 18px;
+          border-radius: 22px;
+          background: #fffdf8;
+          border: 6px dashed #e4572e;
+        }
+        #vflow-qr-fake {
+          display: block;
+          width: 242px;
+          height: 242px;
+        }
+        #vflow-tag {
+          position: absolute;
+          left: 50%;
+          bottom: -26px;
+          padding: 8px 20px 6px;
+          border-radius: 999px;
+          background: #e4572e;
+          color: #fffdf8;
+          font-family: "Space Mono", monospace;
+          font-weight: 700;
+          font-size: 24px;
+          letter-spacing: 0.06em;
+          white-space: nowrap;
+        }
+        .vflow-dest {
+          position: absolute;
+          left: 600px;
+          width: 344px;
+          padding: 26px 30px;
+          border-radius: 26px;
+        }
+        #vflow-toko {
+          top: 470px;
+          background: #efe3cf;
+          color: #4d5666;
+        }
+        #vflow-pelaku {
+          top: 920px;
+          background: #e4572e;
+          color: #fffdf8;
+        }
+        .vflow-dest .k {
+          display: block;
+          font-family: "Space Mono", monospace;
+          font-weight: 700;
+          font-size: 24px;
+          letter-spacing: 0.06em;
+        }
+        .vflow-dest .v {
+          display: block;
+          margin-top: 6px;
+          font-size: 46px;
+          line-height: 1.04;
+          letter-spacing: -0.02em;
+        }
+        #vflow-lines {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 1080px;
+          height: 1920px;
+          overflow: visible;
+        }
+      </style>
+
+      <div id="vflow-root" data-composition-id="vflow" data-width="1080" data-height="1920" data-duration="3.82">
+        <div id="vflow-stage">
+          <svg id="vflow-lines" viewBox="0 0 1080 1920" aria-hidden="true">
+            <path id="vflow-toko-path" d="M430 700 C500 690 540 560 596 548" fill="none" stroke="#b9a891" stroke-width="10" stroke-dasharray="4 22" stroke-linecap="round" />
+            <g transform="translate(512 625)"><g id="vflow-x" stroke="#e4572e" stroke-width="12" stroke-linecap="round"><path d="M-20 -20 L20 20" /><path d="M20 -20 L-20 20" /></g></g>
+            <path id="vflow-money" d="M430 860 C520 890 540 1000 592 1010" fill="none" stroke="#e4572e" stroke-width="14" stroke-linecap="round" />
+            <path id="vflow-head" d="M574 986 L604 1010 L572 1032" fill="none" stroke="#e4572e" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+            <g transform="translate(512 920)"><g id="vflow-coin"><circle r="34" fill="#ffc24a" stroke="#1f2633" stroke-width="5" /><text y="11" text-anchor="middle" font-family="Archivo Black" font-size="28" fill="#1f2633">Rp</text></g></g>
+          </svg>
+          <div id="vflow-stand">
+            <div class="brand">QRIS</div>
+            <svg id="vflow-qr-real" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-hidden="true"></svg>
+          </div>
+          <div id="vflow-fake">
+            <svg id="vflow-qr-fake" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-hidden="true"></svg>
+            <span id="vflow-tag">STIKER PALSU</span>
+          </div>
+          <div id="vflow-toko" class="vflow-dest"><span class="k">SEHARUSNYA</span><span class="v">Kas toko</span></div>
+          <div id="vflow-pelaku" class="vflow-dest"><span class="k">MASUK KE</span><span class="v">Rekening pelaku</span></div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          function qrPattern(svg, seed, ink) {
+            let s = seed;
+            const rnd = () => (s = (s * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+            const N = 29;
+            const ns = "http://www.w3.org/2000/svg";
+            const finder = (x, y) => (x < 8 && y < 8 ? [x, y] : x > N - 9 && y < 8 ? [x - (N - 7), y] : x < 8 && y > N - 9 ? [x, y - (N - 7)] : null);
+            for (let y = 0; y < N; y++) {
+              for (let x = 0; x < N; x++) {
+                const f = finder(x, y);
+                let on;
+                if (f) {
+                  const [fx, fy] = f;
+                  on = fx >= 0 && fy >= 0 && fx <= 6 && fy <= 6 && (fx === 0 || fx === 6 || fy === 0 || fy === 6 || (fx >= 2 && fx <= 4 && fy >= 2 && fy <= 4));
+                } else on = rnd() > 0.52;
+                if (!on) continue;
+                const r = document.createElementNS(ns, "rect");
+                r.setAttribute("x", x);
+                r.setAttribute("y", y);
+                r.setAttribute("width", 1);
+                r.setAttribute("height", 1);
+                r.setAttribute("fill", ink);
+                svg.appendChild(r);
+              }
+            }
+          }
+          qrPattern(document.getElementById("vflow-qr-real"), 20231, "#1f2633");
+          qrPattern(document.getElementById("vflow-qr-fake"), 6661, "#3a1a10");
+
+          const tl = gsap.timeline({ paused: true });
+          // Whip in from the right (the world cut away mid-thought).
+          tl.fromTo("#vflow-stage", { x: 380, filter: "blur(18px)" }, { x: 0, filter: "blur(0px)", duration: 0.32, ease: "power3.out" }, 0);
+          tl.set("#vflow-fake", { rotation: 6 }, 0);
+          tl.set("#vflow-tag", { xPercent: -50 }, 0);
+          // "Kamu scan": where the money should go.
+          tl.fromTo("#vflow-toko", { x: 50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 0.28);
+          tl.fromTo("#vflow-toko-path", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.out" }, 0.4);
+          // "masuk ke rekening dia": the money path draws to the scammer.
+          const money = document.getElementById("vflow-money");
+          const len = money.getTotalLength();
+          money.style.strokeDasharray = len + " " + (len + 40);
+          tl.fromTo(money, { strokeDashoffset: len + 16 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 1.82);
+          tl.fromTo("#vflow-head", { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "power1.out" }, 2.24);
+          tl.fromTo("#vflow-coin", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 1.95);
+          tl.fromTo("#vflow-pelaku", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.6)" }, 1.9);
+          // "bukan ke toko": the toko route is crossed out.
+          tl.fromTo("#vflow-x", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.35, ease: "back.out(2.2)" }, 2.8);
+
+          window.__timelines["vflow"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

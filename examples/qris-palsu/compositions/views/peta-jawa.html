@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Peta kasus</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #vmap-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Archivo Black", sans-serif;
+          color: #1f2633;
+          background: #d6ebe5;
+        }
+        #vmap-waves {
+          position: absolute;
+          inset: 0;
+          background-image: repeating-linear-gradient(170deg, rgba(46, 110, 128, 0.07) 0 3px, transparent 3px 64px);
+        }
+        #vmap-stage {
+          position: absolute;
+          inset: 0;
+        }
+        #vmap-cam {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 1000px;
+          height: 330px;
+          transform-origin: 0 0;
+        }
+        #vmap-svg {
+          display: block;
+          width: 1000px;
+          height: 330px;
+          overflow: visible;
+        }
+        .vmap-callout {
+          position: absolute;
+          width: 470px;
+          padding: 24px 28px 22px;
+          border-radius: 26px;
+          background: #fffdf8;
+          border: 5px solid #1f2633;
+          box-shadow: 0 14px 0 rgba(31, 38, 51, 0.12);
+        }
+        #vmap-c-jkt {
+          left: 64px;
+          top: 360px;
+        }
+        #vmap-c-bdg {
+          left: 474px;
+          top: 1066px;
+        }
+        .vmap-callout .city {
+          display: block;
+          font-size: 44px;
+          line-height: 1.04;
+          letter-spacing: -0.02em;
+        }
+        .vmap-callout .city em {
+          font-style: normal;
+          color: #c8431f;
+        }
+        .vmap-callout .desc {
+          display: block;
+          margin-top: 8px;
+          font-size: 31px;
+          line-height: 1.16;
+          letter-spacing: -0.01em;
+        }
+        .vmap-callout .src {
+          display: inline-block;
+          margin-top: 12px;
+          padding: 4px 12px 2px;
+          border-radius: 8px;
+          background: #efe3cf;
+          font-family: "Space Mono", monospace;
+          font-size: 22px;
+          color: #3d4656;
+        }
+        .vmap-lead {
+          position: absolute;
+          width: 5px;
+          background: #1f2633;
+          transform-origin: 50% 0;
+        }
+        #vmap-l-jkt {
+          left: 413px;
+          top: 586px;
+          height: 140px;
+        }
+        #vmap-l-bdg {
+          left: 666px;
+          top: 1000px;
+          height: 66px;
+          transform-origin: 50% 100%;
+        }
+      </style>
+
+      <div id="vmap-root" data-composition-id="vmap" data-width="1080" data-height="1920" data-duration="8.18">
+        <div id="vmap-waves"></div>
+        <div id="vmap-stage">
+          <div id="vmap-cam">
+            <svg id="vmap-svg" viewBox="0 0 1000 330" aria-hidden="true">
+              <path id="vmap-java" fill="#f4e6c8" stroke="#1f2633" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linejoin="round" />
+              <ellipse cx="840" cy="124" rx="72" ry="16" fill="#f4e6c8" stroke="#1f2633" stroke-width="3" vector-effect="non-scaling-stroke" />
+              <g id="vmap-pin-jkt" transform="translate(183 40)">
+                <circle id="vmap-ring-jkt" r="9" fill="none" stroke="#e4572e" stroke-width="2" />
+                <path d="M0 0 C-7 -8 -7 -16 0 -18 C7 -16 7 -8 0 0 Z" fill="#e4572e" stroke="#1f2633" stroke-width="1.5" />
+                <circle cy="-12" r="2.6" fill="#fffdf8" />
+              </g>
+              <g id="vmap-pin-bdg" transform="translate(262 114)">
+                <circle id="vmap-ring-bdg" r="9" fill="none" stroke="#e4572e" stroke-width="2" />
+                <path d="M0 0 C-7 -8 -7 -16 0 -18 C7 -16 7 -8 0 0 Z" fill="#e4572e" stroke="#1f2633" stroke-width="1.5" />
+                <circle cy="-12" r="2.6" fill="#fffdf8" />
+              </g>
+            </svg>
+          </div>
+          <div id="vmap-l-jkt" class="vmap-lead"></div>
+          <div id="vmap-l-bdg" class="vmap-lead"></div>
+          <div id="vmap-c-jkt" class="vmap-callout">
+            <span class="city">Jakarta, <em>2023</em></span>
+            <span class="desc">Stiker QRIS palsu di kotak amal masjid</span>
+            <span class="src">Sumber: BI, Medcom</span>
+          </div>
+          <div id="vmap-c-bdg" class="vmap-callout">
+            <span class="city">Bandung, <em>2025</em></span>
+            <span class="desc">Belasan pedagang pujasera jadi korban</span>
+            <span class="src">Sumber: Kompas</span>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          // Java coastline from (lon, lat) points, smoothed with Catmull-Rom. X = (lon - 105) * 100, Y = (-lat - 5.8) * 100.
+          const LL = [
+            [105.22, -6.05], [105.9, -6.0], [106.4, -6.0], [106.8, -6.08], [107.3, -6.05], [107.7, -6.2], [108.2, -6.3],
+            [108.55, -6.7], [109.1, -6.85], [109.7, -6.88], [110.4, -6.95], [110.75, -6.45], [111.1, -6.42], [111.45, -6.65],
+            [112.1, -6.88], [112.6, -6.95], [112.75, -7.25], [113.3, -7.6], [113.9, -7.7], [114.45, -7.75], [114.45, -8.2],
+            [114.4, -8.65], [113.8, -8.4], [113.2, -8.35], [112.5, -8.42], [111.6, -8.3], [110.9, -8.15], [110.3, -8.0],
+            [109.6, -7.8], [109.0, -7.72], [108.4, -7.82], [107.6, -7.6], [106.9, -7.4], [106.4, -7.0], [105.8, -6.85],
+            [105.3, -6.8], [105.2, -6.5],
+          ];
+          const P = LL.map(([lon, lat]) => [(lon - 105) * 100, (-lat - 5.8) * 100]);
+          const n = P.length;
+          const at = (i) => P[(i + n) % n];
+          let d = `M${P[0][0].toFixed(1)} ${P[0][1].toFixed(1)}`;
+          for (let i = 0; i < n; i++) {
+            const p0 = at(i - 1), p1 = at(i), p2 = at(i + 1), p3 = at(i + 2);
+            const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+            const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+            d += ` C${c1[0].toFixed(1)} ${c1[1].toFixed(1)} ${c2[0].toFixed(1)} ${c2[1].toFixed(1)} ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+          }
+          document.getElementById("vmap-java").setAttribute("d", d + " Z");
+
+          const D = 8.18;
+          const tl = gsap.timeline({ paused: true });
+          const camAt = (S, F, Q) => ({ scale: S, x: Q[0] - S * F[0], y: Q[1] - S * F[1] });
+          const WEST_JAVA = [222, 77];
+
+          // Push-through from the diagram into the whole island.
+          tl.fromTo("#vmap-stage", { scale: 0.86, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.3, ease: "power2.out" }, 0);
+          tl.set("#vmap-cam", camAt(1, [500, 165], [540, 925]), 0);
+          // "Ada.": the map dives to West Java, where both cases happened.
+          tl.to("#vmap-cam", { ...camAt(3.2, WEST_JAVA, [540, 860]), duration: 0.85, ease: "power2.inOut" }, 1.9);
+          tl.to("#vmap-cam", { ...camAt(3.35, WEST_JAVA, [540, 860]), duration: 5.2, ease: "sine.inOut" }, 2.8);
+
+          const CASES = [
+            ["jkt", 2.75, "#vmap-l-jkt"],
+            ["bdg", 5.8, "#vmap-l-bdg"],
+          ];
+          for (const [k, t0, lead] of CASES) {
+            tl.fromTo(`#vmap-pin-${k} path, #vmap-pin-${k} circle`, { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "none" }, t0);
+            tl.fromTo(`#vmap-pin-${k}`, { scale: 0, transformOrigin: "50% 100%" }, { scale: 1, duration: 0.45, ease: "back.out(2.2)" }, t0);
+            tl.fromTo(`#vmap-ring-${k}`, { scale: 0.6, opacity: 0.9, transformOrigin: "50% 50%" }, { scale: 2.6, opacity: 0, duration: 0.9, ease: "power2.out" }, t0 + 0.2);
+            tl.fromTo(lead, { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "power2.out" }, t0 + 0.1);
+            tl.fromTo(`#vmap-c-${k}`, { y: k === "jkt" ? -24 : 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, t0 + 0.15);
+          }
+
+          window.__timelines["vmap"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

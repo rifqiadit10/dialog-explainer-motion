@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>07 Tagline</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #f7-root {
+          position: absolute;
+          inset: 0;
+          font-family: "Archivo Black", sans-serif;
+          color: #1f2633;
+        }
+        #f7-tag {
+          position: absolute;
+          left: 64px;
+          top: 40px;
+          width: 880px;
+        }
+        #f7-tag .l1,
+        #f7-tag .l2 {
+          display: block;
+          font-size: 132px;
+          line-height: 0.96;
+          letter-spacing: -0.035em;
+        }
+        #f7-tag .l2 {
+          color: #c8431f;
+        }
+        #f7-bar {
+          display: block;
+          width: 520px;
+          height: 16px;
+          margin-top: 22px;
+          border-radius: 8px;
+          background: #ffc24a;
+          transform-origin: 0 50%;
+        }
+        #f7-glow {
+          position: absolute;
+          left: -120px;
+          top: -150px;
+          width: 1100px;
+          height: 760px;
+          border-radius: 50%;
+          background: radial-gradient(ellipse at 40% 50%, rgba(255, 176, 40, 0.55) 0%, rgba(255, 194, 74, 0.2) 40%, rgba(255, 244, 228, 0) 70%);
+          opacity: 0;
+        }
+        #f7-src {
+          position: absolute;
+          left: 64px;
+          top: 520px;
+          font-family: "Space Mono", monospace;
+          font-size: 26px;
+          color: #3d4656;
+        }
+      </style>
+
+      <div id="f7-root" data-composition-id="f7" data-width="1080" data-height="640" data-duration="7.85">
+        <div id="f7-glow" data-layout-allow-overflow="true"></div>
+        <div id="f7-tag">
+          <span class="l1">Cek dulu,</span>
+          <span class="l2">baru bayar.</span>
+          <span id="f7-bar"></span>
+        </div>
+        <div id="f7-src">Sumber: Bank Indonesia, OJK</div>
+      </div>
+
+      <script>
+        (function () {
+          const D = 7.85;
+          const tl = gsap.timeline({ paused: true });
+
+          // kinetic-beat-slam on Dika's words: "cek ... dulu" slams, "baru bayar" snaps in from the side.
+          tl.fromTo("#f7-tag .l1", { scale: 1.35, opacity: 0, filter: "blur(12px)", transformOrigin: "0% 60%" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 2.12);
+          tl.fromTo("#f7-tag .l2", { x: -130, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power4.out" }, 3.44);
+          // Sari repeats it: the glow blooms behind and the underline sweeps (ambient-glow-bloom).
+          tl.fromTo("#f7-glow", { opacity: 0, scale: 0.7 }, { opacity: 0.42, scale: 1, duration: 0.6, ease: "power2.out" }, 4.4);
+          const glow = document.getElementById("f7-glow");
+          const phase = { p: 0 };
+          tl.to(phase, {
+            p: Math.PI * 2,
+            duration: D - 5.0,
+            ease: "none",
+            onUpdate: () => {
+              const s = Math.sin(phase.p);
+              glow.style.opacity = String(0.42 + s * 0.03);
+              glow.style.transform = "scale(" + (1 + s * 0.02) + ")";
+            },
+          }, 5.0);
+          tl.fromTo("#f7-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 5.15);
+          tl.fromTo("#f7-src", { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power2.out" }, 5.7);
+
+          window.__timelines["f7"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
