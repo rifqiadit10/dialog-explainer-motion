@@ -1,6 +1,6 @@
 <div align="center">
 
-# Dialog Explainer
+# Dialog Explainer Motion
 
 **An agent skill for two-character dialogue explainers that move like film, not slides.**<br>
 Two illustrated characters talk; the camera works inside one world, cutting to whoever speaks and to whatever they point at. Voices, lip-sync, karaoke captions, and a music bed carved under the dialogue, rendered to MP4 with [HyperFrames](https://hyperframes.heygen.com).
@@ -67,16 +67,16 @@ Voices and music are generated or licensed under **your** account. None are ship
 ### As a Claude Code plugin
 
 ```
-/plugin marketplace add rifqiadit10/dialog-explainer
+/plugin marketplace add rifqiadit10/dialog-explainer-motion
 ```
 ```
-/plugin install dialog-explainer@dialog-explainer
+/plugin install dialog-explainer-motion@dialog-explainer-motion
 ```
 
 ### Manual
 
 ```bash
-git clone https://github.com/rifqiadit10/dialog-explainer ~/.claude/skills/dialog-explainer
+git clone https://github.com/rifqiadit10/dialog-explainer-motion ~/.claude/skills/dialog-explainer-motion
 ```
 
 For other agents, copy the folder into the agent's skills directory or reference `SKILL.md` from

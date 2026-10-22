@@ -1,14 +1,14 @@
 ---
-name: dialog-explainer
+name: dialog-explainer-motion
 description: Membuat video explainer berbentuk percakapan dua karakter ilustrasi (ngobrol, tanya-jawab, sketsa dialog) dengan suara TTS, lip-sync, subtitle karaoke, dan kamera yang bergerak di dalam satu dunia, bukan slide. Dibangun di atas HyperFrames (HTML + GSAP) dan dirender ke MP4, biasanya 9:16 untuk Reels/TikTok/Shorts. Gunakan skill ini setiap kali user meminta video edukasi, sosialisasi, iklan layanan masyarakat, atau penjelasan produk yang berbentuk dua orang/karakter ngobrol, "karakter animasi yang bicara", "video percakapan", "dua tokoh menjelaskan", atau ingin membuat video seperti contoh QRIS palsu, bahkan bila kata "dialog" tidak disebut. Juga gunakan untuk memperbaiki video dialog yang terasa statis atau seperti slide.
 license: MIT
 metadata:
   author: Rifqi Aditya
   version: "1.0.0"
-  homepage: https://github.com/rifqiadit10/dialog-explainer
+  homepage: https://github.com/rifqiadit10/dialog-explainer-motion
 ---
 
-# Dialog Explainer
+# Dialog Explainer Motion
 
 Skill ini membuat video penjelasan berbentuk obrolan dua karakter vektor setengah badan.
 Keduanya berdiri di dalam satu dunia (bawaan: kedai dengan meja kasir), dan kamera bergerak
