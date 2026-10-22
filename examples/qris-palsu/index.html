@@ -486,13 +486,13 @@
       </div>
 
       <!-- ===== screen layer: cut-away views, overlays, header, captions ===== -->
-      <div id="v-insert" class="view-host" data-composition-id="vins" data-composition-src="compositions/views/insert-hp.html" data-start="10.36" data-duration="5.11" data-track-index="1" data-width="1080" data-height="1920"></div>
-      <div id="v-flow" class="view-host" data-composition-id="vflow" data-composition-src="compositions/views/aliran-uang.html" data-start="21.45" data-duration="3.82" data-track-index="1" data-width="1080" data-height="1920"></div>
-      <div id="v-map" class="view-host" data-composition-id="vmap" data-composition-src="compositions/views/peta-jawa.html" data-start="25.27" data-duration="8.18" data-track-index="1" data-width="1080" data-height="1920"></div>
-      <div id="o-f5" class="view-host" data-composition-id="f5o" data-composition-src="compositions/overlays/f5-pov.html" data-start="33.45" data-duration="13.6" data-track-index="2" data-width="1080" data-height="1920"></div>
-      <div id="o-f6" class="view-host" data-composition-id="f6o" data-composition-src="compositions/overlays/f6-notif.html" data-start="47.05" data-duration="9.65" data-track-index="2" data-width="1080" data-height="1920"></div>
+      <div id="v-insert" class="view-host" data-composition-id="vins" data-composition-src="compositions/views/insert-hp.html" data-start="10.357" data-duration="5.116" data-cue="frame:2 +0.3" data-cue-end="frame:3" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="v-flow" class="view-host" data-composition-id="vflow" data-composition-src="compositions/views/aliran-uang.html" data-start="21.45" data-duration="3.821" data-cue="f3-2-sari:scan -0.23" data-cue-end="frame:4" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="v-map" class="view-host" data-composition-id="vmap" data-composition-src="compositions/views/peta-jawa.html" data-start="25.271" data-duration="8.181" data-cue="frame:4" data-cue-end="frame:5" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="o-f5" class="view-host" data-composition-id="f5o" data-composition-src="compositions/overlays/f5-pov.html" data-start="33.452" data-duration="13.599" data-cue="frame:5" data-cue-end="frame:6" data-track-index="2" data-width="1080" data-height="1920"></div>
+      <div id="o-f6" class="view-host" data-composition-id="f6o" data-composition-src="compositions/overlays/f6-notif.html" data-start="47.051" data-duration="9.649" data-cue="frame:6" data-cue-end="frame:7" data-track-index="2" data-width="1080" data-height="1920"></div>
       <div id="scrim"></div>
-      <div id="f7" class="frame-host" data-composition-id="f7" data-composition-src="compositions/frames/07-tagline.html" data-start="56.7" data-duration="7.852" data-track-index="2" data-width="1080" data-height="640"></div>
+      <div id="f7" class="frame-host" data-composition-id="f7" data-composition-src="compositions/frames/07-tagline.html" data-start="56.7" data-duration="7.852" data-cue="frame:7" data-cue-end="frame:7@end" data-track-index="2" data-width="1080" data-height="640"></div>
 
       <div id="header">
         <span class="pill">EDUKASI</span>
@@ -560,6 +560,27 @@
     <script>
       (function () {
         /* CAST:BEGIN */ const CAST_LINES = [{"who":"dika","start":0.5,"end":7.113,"words":[[0.5,0.948,1],[1.14,1.567,3],[1.609,1.695,2],[1.737,1.908,2],[1.951,2.42,2],[2.633,2.889,2],[2.975,3.188,2],[3.231,3.444,2],[3.487,3.871,1],[4.041,4.34,2],[4.383,5.044,3],[5.279,5.535,2],[5.577,5.961,3],[6.004,6.217,2],[6.26,6.644,2],[6.687,6.943,1],[6.943,7.113,2]]},{"who":"sari","start":7.413,"end":9.857,"words":[[7.413,8.053,1],[8.437,9.077,4],[9.12,9.333,1],[9.418,9.857,2]]},{"who":"sari","start":10.307,"end":15.273,"words":[[10.307,11.053,3],[11.288,11.714,3],[11.8,12.376,2],[12.611,12.781,1],[12.867,13.165,2],[13.251,13.549,2],[13.592,14.018,2],[14.147,14.317,1],[14.36,14.573,2],[14.659,14.914,1],[14.957,15.273,2]]},{"who":"dika","start":15.723,"end":16.986,"words":[[15.723,15.936,1],[16.022,16.32,2],[16.363,16.986,3]]},{"who":"sari","start":17.286,"end":25.071,"words":[[17.286,17.712,3],[17.755,18.181,3],[18.224,18.565,2],[18.651,18.992,1],[19.078,19.547,3],[19.59,19.675,1],[19.718,19.973,2],[20.059,20.229,1],[20.315,21.04,2],[21.382,21.637,2],[21.68,22.171,1],[22.363,22.875,2],[22.918,23.173,2],[23.259,23.301,1],[23.344,23.643,3],[23.686,24.091,1],[24.283,24.581,2],[24.667,24.709,1],[24.752,25.071,2]]},{"who":"dika","start":25.521,"end":26.723,"words":[[25.521,25.82,2],[25.862,26.161,3],[26.204,26.723,2]]},{"who":"sari","start":27.023,"end":33.252,"words":[[27.023,27.577,2],[27.876,28.047,1],[28.089,28.473,3],[28.516,28.772,2],[28.815,29.284,4],[29.327,29.412,1],[29.455,29.753,2],[29.796,30.052,2],[30.137,30.735,2],[30.991,31.119,1],[31.161,31.609,2],[31.716,32.1,3],[32.143,32.612,4],[32.74,32.953,2],[32.996,33.252,2]]},{"who":"dika","start":33.702,"end":35.023,"words":[[33.702,33.958,2],[34.001,34.385,3],[34.427,35.023,3]]},{"who":"sari","start":35.323,"end":46.851,"words":[[35.323,36.006,2],[36.262,36.56,2],[36.603,36.944,2],[37.072,37.328,2],[37.414,37.584,2],[37.712,37.968,2],[38.011,38.224,2],[38.267,38.8,2],[39.035,39.632,1],[39.846,40.016,1],[40.102,40.976,4],[41.211,41.702,2],[41.894,42.15,2],[42.192,42.32,2],[42.448,42.747,1],[42.832,43.302,3],[43.344,43.43,1],[43.472,43.686,2],[43.814,44.07,1],[44.112,44.411,1],[44.539,44.795,2],[44.838,45.328,2],[45.478,46.054,2],[46.246,46.502,2],[46.502,46.851,2]]},{"who":"dika","start":47.301,"end":48.935,"words":[[47.301,47.642,2],[47.685,47.813,2],[47.856,48.24,3],[48.325,48.935,2]]},{"who":"sari","start":49.235,"end":56.5,"words":[[49.235,49.618,3],[49.661,50.002,3],[50.045,50.216,1],[50.344,50.6,2],[50.643,51.026,3],[51.069,51.603,2],[51.837,52.221,2],[52.307,52.562,2],[52.605,53.139,2],[53.373,53.672,2],[53.715,54.013,2],[54.099,54.184,1],[54.227,54.568,4],[54.781,55.506,3],[55.592,55.89,2],[55.976,56.5,1]]},{"who":"dika","start":56.95,"end":60.845,"words":[[56.95,57.526,2],[57.803,58.23,2],[58.273,58.699,3],[58.87,59.254,1],[59.297,59.51,2],[59.553,59.979,2],[60.193,60.448,2],[60.491,60.845,2]]},{"who":"sari","start":61.145,"end":62.752,"words":[[61.145,61.358,1],[61.401,61.785,2],[61.87,62.084,2],[62.126,62.752,2]]}]; /* CAST:END */
+        /* CUES:BEGIN */ const CUE_DATA = {"lines":{"f1-1-dika":{"s":0.5,"e":7.113,"w":[["sar",0.5,0.948],["kayaknya",1.14,1.567],["aku",1.609,1.695],["kena",1.737,1.908],["tipu",1.951,2.42],["bayar",2.633,2.889],["kopi",2.975,3.188],["pakai",3.231,3.444],["qris",3.487,3.871],["saldo",4.041,4.34],["kepotong",4.383,5.044],["tapi",5.279,5.535],["kasirnya",5.577,5.961],["bilang",6.004,6.217],["uangnya",6.26,6.644],["nggak",6.687,6.943],["masuk",6.943,7.113]]},"f1-2-sari":{"s":7.413,"e":9.857,"w":[["hah",7.413,8.053],["jangan-jangan",8.437,9.077],["qris",9.12,9.333],["palsu",9.418,9.857]]},"f2-1-sari":{"s":10.307,"e":15.273,"w":[["makanya",10.307,11.053],["sebelum",11.288,11.714],["bayar",11.8,12.376],["cek",12.611,12.781],["dulu",12.867,13.165],["nama",13.251,13.549],["merchant",13.592,14.018],["di",14.147,14.317],["layar",14.36,14.573],["hp",14.659,14.914],["kamu",14.957,15.273]]},"f3-1-dika":{"s":15.723,"e":16.986,"w":[["qris",15.723,15.936],["palsu",16.022,16.32],["gimana",16.363,16.986]]},"f3-2-sari":{"s":17.286,"e":25.071,"w":[["pelaku",17.286,17.712],["nempelin",17.755,18.181],["stiker",18.224,18.565],["qr",18.651,18.992],["miliknya",19.078,19.547],["di",19.59,19.675],["atas",19.718,19.973],["qris",20.059,20.229],["asli",20.315,21.04],["kamu",21.382,21.637],["scan",21.68,22.171],["uangnya",22.363,22.875],["masuk",22.918,23.173],["ke",23.259,23.301],["rekening",23.344,23.643],["dia",23.686,24.091],["bukan",24.283,24.581],["ke",24.667,24.709],["toko",24.752,25.071]]},"f4-1-dika":{"s":25.521,"e":26.723,"w":[["emang",25.521,25.82],["beneran",25.862,26.161],["ada",26.204,26.723]]},"f4-2-sari":{"s":27.023,"e":33.252,"w":[["ada",27.023,27.577],["di",27.876,28.047],["jakarta",28.089,28.473],["pernah",28.516,28.772],["ditemukan",28.815,29.284],["di",29.327,29.412],["kotak",29.455,29.753],["amal",29.796,30.052],["masjid",30.137,30.735],["di",30.991,31.119],["bandung",31.161,31.609],["pedagang",31.716,32.1],["pujasera",32.143,32.612],["juga",32.74,32.953],["kena",32.996,33.252]]},"f5-1-dika":{"s":33.702,"e":35.023,"w":[["terus",33.702,33.958],["ngeceknya",34.001,34.385],["gimana",34.427,35.023]]},"f5-2-sari":{"s":35.323,"e":46.851,"w":[["satu",35.323,36.006],["nama",36.262,36.56],["merchant",36.603,36.944],["harus",37.072,37.328],["sama",37.414,37.584],["dengan",37.712,37.968],["nama",38.011,38.224],["toko",38.267,38.8],["dua",39.035,39.632],["cek",39.846,40.016],["nominalnya",40.102,40.976],["tiga",41.211,41.702],["kalau",41.894,42.15],["ada",42.192,42.32],["qr",42.448,42.747],["ditempel",42.832,43.302],["di",43.344,43.43],["atas",43.472,43.686],["qr",43.814,44.07],["lain",44.112,44.411],["jangan",44.539,44.795],["bayar",44.838,45.328],["ragu",45.478,46.054],["tanya",46.246,46.502],["kasir",46.502,46.851]]},"f6-1-dika":{"s":47.301,"e":48.935,"w":[["aku",47.301,47.642],["udah",47.685,47.813],["terlanjur",47.856,48.24],["bayar",48.325,48.935]]},"f6-2-sari":{"s":49.235,"e":56.5,"w":[["segera",49.235,49.618],["hubungi",49.661,50.002],["bank",50.045,50.216],["atau",50.344,50.6],["e-wallet",50.643,51.026],["kamu",51.069,51.603],["simpan",51.837,52.221],["bukti",52.307,52.562],["bayar",52.605,53.139],["lalu",53.373,53.672],["lapor",53.715,54.013],["ke",54.099,54.184],["indonesia",54.227,54.568],["anti-scam",54.781,55.506],["centre",55.592,55.89],["ojk",55.976,56.5]]},"f7-1-dika":{"s":56.95,"e":60.845,"w":[["oke",56.95,57.526],["mulai",57.803,58.23],["sekarang",58.273,58.699],["cek",58.87,59.254],["nama",59.297,59.51],["dulu",59.553,59.979],["baru",60.193,60.448],["bayar",60.491,60.845]]},"f7-2-sari":{"s":61.145,"e":62.752,"w":[["cek",61.145,61.358],["dulu",61.401,61.785],["baru",61.87,62.084],["bayar",62.126,62.752]]}},"frames":{"1":[0,10.057],"2":[10.057,15.473],"3":[15.473,25.271],"4":[25.271,33.452],"5":[33.452,47.051],"6":[47.051,56.7],"7":[56.7,64.552]}};
+        const cue = (spec, offset = 0) => resolveCue(CUE_DATA, spec, offset);
+        function resolveCue(D, spec, offset) {
+          const m = /^\s*([^\s:@#]+)(?::([^\s@#]+))?(?:#(\d+))?(@end)?\s*([+-]\s*[\d.]+)?\s*$/.exec(String(spec));
+          if (!m) throw new Error(`cue "${spec}": expected line[:word][#n][@end] [+-seconds]`);
+          const [, id, word, nth, atEnd, off] = m;
+          const shift = (off ? parseFloat(off.replace(/\s+/g, "")) : 0) + (offset || 0);
+          if (id === "frame") {
+            const f = D.frames[word];
+            if (!f) throw new Error(`cue "${spec}": no frame ${word} (frames: ${Object.keys(D.frames).join(" ")})`);
+            return +(f[atEnd ? 1 : 0] + shift).toFixed(3);
+          }
+          const L = D.lines[id];
+          if (!L) throw new Error(`cue "${spec}": no line "${id}"`);
+          if (!word) return +((atEnd ? L.e : L.s) + shift).toFixed(3);
+          const key = word.toLowerCase().replace(/[^\p{L}\p{N}-]/gu, "");
+          const hits = L.w.filter((w) => w[0] === key);
+          const n = nth ? Number(nth) : 1;
+          if (hits.length < n) throw new Error(`cue "${spec}": "${key}" ${hits.length ? `is spoken ${hits.length}x` : "is not spoken"} in ${id} (${L.w.map((w) => w[0]).join(" ")})`);
+          return +(hits[n - 1][atEnd ? 2 : 1] + shift).toFixed(3);
+        } /* CUES:END */
         const TOTAL = parseFloat(document.getElementById("root").dataset.duration);
         const tl = gsap.timeline({ paused: true });
         const $ = (id) => document.getElementById(id);
@@ -599,25 +620,25 @@
         const STAND = [540, 1240];
         const REGISTER = [910, 1240];
         const SHOTS = [
-          // [time, duration (0 = cut), S, P (world), Q (screen), ease]
+          // [time, duration (0 = cut), S, P (world), Q (screen), ease]; times are word cues (build-root.mjs)
           [0, 0, 1, [540, 960], [540, 960]],
           [0.2, 2.1, 1.06, [540, 1100], [540, 1100], "sine.inOut"], // establishing, slow push
-          [2.35, 0.9, 2.0, [320, 1130], [540, 780], "power2.inOut"], // "Bayar kopi": MCU Dika + phone
-          [5.3, 0.65, 2.0, REGISTER, [540, 820], "power3.inOut"], // "kasirnya bilang": pan to the register
-          [7.3, 0, 2.1, [830, 1110], [540, 760]], // "Hah?": cut to Sari
-          [7.32, 2.7, 2.25, [830, 1110], [540, 760], "sine.inOut"],
-          [10.06, 0, 2.4, DIKA_PHONE, [540, 820]], // cut to Dika's phone
-          [10.1, 0.36, 7, DIKA_PHONE, [540, 820], "power3.in"], // push through the screen into the insert
-          [15.47, 0, 2.6, STAND, [540, 760]], // CU of the QRIS stand
-          [15.5, 5.9, 2.75, STAND, [540, 760], "sine.inOut"],
-          [33.45, 0, 1.7, [330, 364], [560, 700]], // POV: shop sign behind Dika's phone
-          [39.0, 0.7, 1.9, [825, 434], [640, 640], "power3.inOut"], // "Dua": the menu price
-          [41.15, 0.75, 2.6, STAND, [540, 760], "power3.inOut"], // "Tiga": the sticker on the stand
-          [45.4, 0.6, 2.0, REGISTER, [540, 820], "power3.inOut"], // "Tanya kasir"
-          [47.05, 0, 2.1, [310, 1120], [540, 760]], // MCU Dika, worried
-          [47.1, 1.9, 2.2, [310, 1120], [540, 760], "sine.inOut"],
-          [49.15, 0.8, 1.5, [540, 1150], [540, 1000], "power2.inOut"], // two-shot while the steps land
-          [56.7, 1.4, 1.22, [540, 1150], [540, 1080], "power2.inOut"], // pull back for the tagline
+          [cue("f1-1-dika:bayar -0.28"), 0.9, 2.0, [320, 1130], [540, 780], "power2.inOut"], // "Bayar kopi": MCU Dika + phone
+          [cue("f1-1-dika:kasirnya -0.28"), 0.65, 2.0, REGISTER, [540, 820], "power3.inOut"], // "kasirnya bilang": pan to the register
+          [cue("f1-2-sari:hah -0.11"), 0, 2.1, [830, 1110], [540, 760]], // "Hah?": cut to Sari
+          [cue("f1-2-sari:hah -0.09"), 2.7, 2.25, [830, 1110], [540, 760], "sine.inOut"],
+          [cue("frame:2"), 0, 2.4, DIKA_PHONE, [540, 820]], // cut to Dika's phone
+          [cue("frame:2 +0.04"), 0.36, 7, DIKA_PHONE, [540, 820], "power3.in"], // push through the screen into the insert
+          [cue("frame:3"), 0, 2.6, STAND, [540, 760]], // CU of the QRIS stand
+          [cue("frame:3 +0.03"), 5.9, 2.75, STAND, [540, 760], "sine.inOut"],
+          [cue("frame:5"), 0, 1.7, [330, 364], [560, 700]], // POV: shop sign behind Dika's phone
+          [cue("f5-2-sari:dua -0.03"), 0.7, 1.9, [825, 434], [640, 640], "power3.inOut"], // "Dua": the menu price
+          [cue("f5-2-sari:tiga -0.06"), 0.75, 2.6, STAND, [540, 760], "power3.inOut"], // "Tiga": the sticker on the stand
+          [cue("f5-2-sari:ragu -0.08"), 0.6, 2.0, REGISTER, [540, 820], "power3.inOut"], // "ragu, tanya kasir"
+          [cue("frame:6"), 0, 2.1, [310, 1120], [540, 760]], // MCU Dika, worried
+          [cue("frame:6 +0.05"), 1.9, 2.2, [310, 1120], [540, 760], "sine.inOut"],
+          [cue("f6-2-sari -0.09"), 0.8, 1.5, [540, 1150], [540, 1000], "power2.inOut"], // two-shot while the steps land
+          [cue("frame:7"), 1.4, 1.22, [540, 1150], [540, 1080], "power2.inOut"], // pull back for the tagline
         ];
         for (const [t, d, S, P, Q, ease] of SHOTS) {
           const c = cam(S, P, Q);
@@ -626,30 +647,31 @@
         }
         // Rack focus for the over-the-shoulder shot: world soft behind the phone, then sharp on the sign.
         tl.set("#world-fx", { filter: "blur(0px)" }, 0);
-        tl.set("#world-fx", { filter: "blur(7px)" }, 33.45);
-        tl.to("#world-fx", { filter: "blur(0px)", duration: 0.35, ease: "power2.inOut" }, 36.95);
+        tl.set("#world-fx", { filter: "blur(7px)" }, cue("frame:5"));
+        tl.to("#world-fx", { filter: "blur(0px)", duration: 0.35, ease: "power2.inOut" }, cue("f5-2-sari:merchant@end"));
         // Paper scrim so the tagline reads over the wall.
-        tl.fromTo("#scrim", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 58.6);
-        tl.fromTo(["#w-sign", "#w-menu"], { opacity: 1 }, { opacity: 0, duration: 0.5, ease: "power2.out" }, 56.7);
+        tl.fromTo("#scrim", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, cue("f7-1-dika:cek -0.27"));
+        tl.fromTo(["#w-sign", "#w-menu"], { opacity: 1 }, { opacity: 0, duration: 0.5, ease: "power2.out" }, cue("frame:7"));
         // Hide the world while a full-screen cut-away view covers it.
-        for (const [off, on] of [[10.6, 15.47], [21.46, 33.45]]) {
+        for (const [off, on] of [[cue("frame:2 +0.54"), cue("frame:3")], [cue("f3-2-sari:scan -0.22"), cue("frame:5")]]) {
           tl.set("#viewport", { autoAlpha: 0 }, off);
           tl.set("#viewport", { autoAlpha: 1 }, on);
         }
 
         // ---- World action ----
         // "kasirnya bilang uangnya nggak masuk": the register LED blinks.
-        tl.to("#w-reg-led", { opacity: 0.2, duration: 0.16, ease: "none", yoyo: true, repeat: 5 }, 5.7);
+        tl.to("#w-reg-led", { opacity: 0.2, duration: 0.16, ease: "none", yoyo: true, repeat: 5 }, cue("f1-1-dika:kasirnya +0.12"));
         // "nempelin stiker QR miliknya": a hand slaps the fake sticker over the stand (nudge-curve), then leaves.
         tl.set(["#w-hand", "#w-sticker"], { opacity: 0 }, 0);
-        tl.set("#w-hand", { opacity: 1, x: 460 }, 17.8);
-        tl.set("#w-sticker", { opacity: 1, x: 460, rotation: 12, transformOrigin: "50% 50%" }, 17.8);
-        tl.to(["#w-hand", "#w-sticker"], { x: 414, duration: 0.12, ease: "power3.in" }, 17.8);
-        tl.to(["#w-hand", "#w-sticker"], { x: 115, duration: 0.11, ease: "none" }, 17.92);
-        tl.to(["#w-hand", "#w-sticker"], { x: 0, duration: 0.42, ease: "power4.out" }, 18.03);
-        tl.to("#w-sticker", { rotation: 4, duration: 0.5, ease: "power3.out" }, 18.0);
-        tl.to("#w-hand", { x: 540, duration: 0.45, ease: "power2.in" }, 18.8);
-        tl.set("#w-hand", { opacity: 0 }, 19.3);
+        const SLAP = cue("f3-2-sari:nempelin +0.05");
+        tl.set("#w-hand", { opacity: 1, x: 460 }, SLAP);
+        tl.set("#w-sticker", { opacity: 1, x: 460, rotation: 12, transformOrigin: "50% 50%" }, SLAP);
+        tl.to(["#w-hand", "#w-sticker"], { x: 414, duration: 0.12, ease: "power3.in" }, SLAP);
+        tl.to(["#w-hand", "#w-sticker"], { x: 115, duration: 0.11, ease: "none" }, SLAP + 0.12);
+        tl.to(["#w-hand", "#w-sticker"], { x: 0, duration: 0.42, ease: "power4.out" }, SLAP + 0.23);
+        tl.to("#w-sticker", { rotation: 4, duration: 0.5, ease: "power3.out" }, SLAP + 0.2);
+        tl.to("#w-hand", { x: 540, duration: 0.45, ease: "power2.in" }, SLAP + 1.0);
+        tl.set("#w-hand", { opacity: 0 }, SLAP + 1.5);
 
         // Header.
         tl.fromTo("#header .pill", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.8)" }, 0.15);
@@ -666,27 +688,27 @@
         const POSES = {
           dika: [
             [0, { brow: "worried", rest: "frown", arm: "none" }],
-            [2.63, { arm: "phone" }],
-            [15.47, { brow: "neutral", rest: "closed", arm: "none" }],
-            [25.27, { brow: "up" }],
-            [28.5, { brow: "neutral" }],
-            [47.05, { brow: "worried", rest: "frown", arm: "phone" }],
-            [56.7, { brow: "up", rest: "smile", arm: "none" }],
-            [61.15, { arm: "up" }],
+            [cue("f1-1-dika:bayar"), { arm: "phone" }],
+            [cue("frame:3"), { brow: "neutral", rest: "closed", arm: "none" }],
+            [cue("frame:4"), { brow: "up" }],
+            [cue("f4-2-sari:pernah -0.02"), { brow: "neutral" }],
+            [cue("frame:6"), { brow: "worried", rest: "frown", arm: "phone" }],
+            [cue("frame:7"), { brow: "up", rest: "smile", arm: "none" }],
+            [cue("f7-2-sari"), { arm: "up" }],
           ],
           sari: [
             [0, { brow: "neutral", rest: "closed", arm: "none" }],
-            [7.41, { brow: "up" }],
-            [10.06, { brow: "neutral", arm: "explain" }],
-            [15.47, { arm: "none" }],
-            [17.28, { arm: "explain" }],
-            [25.27, { arm: "none" }],
-            [27.02, { brow: "up" }],
-            [28.5, { brow: "neutral" }],
-            [35.32, { arm: "explain" }],
-            [47.05, { arm: "none" }],
-            [56.7, { rest: "smile" }],
-            [61.15, { brow: "up", arm: "up" }],
+            [cue("f1-2-sari"), { brow: "up" }],
+            [cue("frame:2"), { brow: "neutral", arm: "explain" }],
+            [cue("frame:3"), { arm: "none" }],
+            [cue("f3-2-sari"), { arm: "explain" }],
+            [cue("frame:4"), { arm: "none" }],
+            [cue("f4-2-sari"), { brow: "up" }],
+            [cue("f4-2-sari:pernah -0.02"), { brow: "neutral" }],
+            [cue("f5-2-sari"), { arm: "explain" }],
+            [cue("frame:6"), { arm: "none" }],
+            [cue("frame:7"), { rest: "smile" }],
+            [cue("f7-2-sari"), { brow: "up", arm: "up" }],
           ],
         };
         const PARTS = {

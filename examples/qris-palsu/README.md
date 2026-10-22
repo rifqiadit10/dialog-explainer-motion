@@ -14,7 +14,9 @@ author's HeyGen account. To render it yourself:
 ```bash
 npx hyperframes init my-qris --non-interactive --example=blank --skill=general-video
 # copy this folder's files into my-qris/, then from my-qris/:
-node <skill>/scripts/tts.mjs audio/lines.json audio/voice          # needs the HeyGen CLI, signed in
+node <skill>/scripts/tts.mjs audio/lines.json audio/voice          # HeyGen CLI, signed in
+# or: put your own audio/voice/<id>.mp3 per line, then
+# node <skill>/scripts/align.mjs audio/lines.json audio/voice --model small --language id
 node <skill>/scripts/timing.mjs audio/lines.json audio/voice audio/timing.json
 # add your own bed at audio/music/bed.mp3 (or remove "music" from lines.json)
 node <skill>/scripts/build-root.mjs
@@ -24,8 +26,8 @@ npx hyperframes check .
 npx hyperframes render . -q high -o renders/qris-palsu.mp4
 ```
 
-New TTS takes produce slightly different word timings. The camera shots (`SHOTS`), poses
-(`POSES`), and overlay cues in this example are hand-timed to the original takes, so re-time them
-to your `audio/timing.json` after regenerating the voices.
+Camera shots (`SHOTS`), poses (`POSES`), world actions, and the view/overlay clips are word cues,
+so new voice takes move them automatically. The beats inside the overlays (checklist chips,
+notifications) are seconds relative to their clip; check them in the preview after a new take.
 
 Facts were checked on 2026-10-21 (see `SOURCES.md`). Re-verify before publishing.

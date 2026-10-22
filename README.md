@@ -7,7 +7,7 @@ Two illustrated characters talk; the camera works inside one world, cutting to w
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-3fa34d?style=flat-square)](LICENSE)
 [![Format: Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-1c2a4a?style=flat-square)](#install)
-[![Version](https://img.shields.io/badge/version-1.0.0-2f6fd6?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.1.0-2f6fd6?style=flat-square)](CHANGELOG.md)
 [![Works with](https://img.shields.io/badge/works%20with-any%20Agent%20Skills%20agent-7a5af5?style=flat-square)](#install)
 
 <img src="docs/gallery/hero.jpg" alt="Eight frames from the example video: establishing shot of a coffee shop, push-in on a worried customer holding his phone, an insert of the payment screen, a hand slapping a fake QR sticker over the shop's QRIS stand, a map of Java with case pins, a rack focus from the phone to the shop sign, the menu price ringed against the phone's total, and the closing tagline with a high five" width="100%">
@@ -57,7 +57,7 @@ in any language your TTS voices support.
 | To... | You need |
 |---|---|
 | Build and render | Any coding agent that can run shell commands and read files, Node 18+, ffmpeg, and the HyperFrames skills: `npx hyperframes skills update general-video` |
-| Voices with word timestamps | The [HeyGen CLI](https://developers.heygen.com/cli), signed in with your own account (`heygen auth login --oauth`). macOS and Linux run it natively; on Windows, install it in WSL and set `HEYGEN_WSL=1`. |
+| Voices with word timestamps | Either the [HeyGen CLI](https://developers.heygen.com/cli), signed in with your own account (`scripts/tts.mjs`; on Windows, install it in WSL and set `HEYGEN_WSL=1`), or audio from anywhere (another TTS, a recorded voice-over) plus `scripts/align.mjs`, which reads ElevenLabs alignment, any word-timestamp JSON, or runs local whisper through `hyperframes transcribe`. |
 | Carve the music under the voices | `@hyperframes/core` as a devDependency of the video project |
 | Audit the choreography | `@hyperframes/producer` as a devDependency of the video project |
 
@@ -138,7 +138,14 @@ flowchart LR
 ```
 
 Voice timing drives everything: `scripts/timing.mjs` lays the lines on one clock, and camera shots,
-poses, captions, and overlay cues are all keyed to word start times.
+poses, and clips are written as word cues instead of seconds:
+
+```js
+[cue("f5-2-sari:dua -0.03"), 0.7, 1.9, MENU, [640, 640], "power3.inOut"], // "Dua": the menu price
+```
+
+`build-root.mjs` resolves and checks every cue against `audio/timing.json`, so a new voice take,
+another voice, or different pauses move the whole choreography with it.
 
 ## Repository layout
 
@@ -147,8 +154,9 @@ SKILL.md                    workflow and rules (read by the agent, Indonesian)
 references/                 camera, cast, audio, captions, facts, known pitfalls
 scripts/
   tts.mjs                   HeyGen TTS with word timestamps (WSL-aware)
+  align.mjs                 word timestamps for audio from any source (ElevenLabs, JSON, local whisper)
   timing.mjs                lays lines on one timeline, derives frame windows
-  build-root.mjs            injects audio, caption cards, and lip-sync data
+  build-root.mjs            injects audio, caption cards, lip-sync data, and word cues
 assets/starter/             runnable 20 s demo: camera rig, world, cast, one view/overlay/tagline
 examples/qris-palsu/        full reference project (code, script, storyboard, sources; no media)
 docs/gallery/               stills from the example render

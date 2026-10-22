@@ -32,16 +32,17 @@ grup SVG + entri di `PARTS`.
 const POSES = {
   dika: [
     [0, { brow: "worried", rest: "frown", arm: "none" }],
-    [2.63, { arm: "phone" }],            // saat kata "Bayar"
-    [61.15, { arm: "up" }],              // tos di akhir
+    [cue("f1-1-dika:bayar"), { arm: "phone" }],   // saat kata "Bayar"
+    [cue("f7-2-sari"), { arm: "up" }],             // tos saat baris terakhir mulai
   ],
   sari: [ ... ],
 };
 ```
 
 Tiap entri `[waktu, perubahan]` menimpa keadaan sebelumnya. `rest` adalah mulut saat tidak bicara.
-`arm: "up"` dianimasikan berputar dari bahu dengan `back.out` (tos). Ambil waktu dari
-`audio/timing.json`, dan beri pendengar ekspresi juga (alis naik saat kaget, senyum saat lega).
+`arm: "up"` dianimasikan berputar dari bahu dengan `back.out` (tos). Tulis waktu sebagai cue kata
+(`references/kamera.md`) dengan urutan naik, dan beri pendengar ekspresi juga (alis naik saat kaget,
+senyum saat lega).
 
 ## Lip-sync
 

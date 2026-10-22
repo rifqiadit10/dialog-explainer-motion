@@ -469,10 +469,10 @@
       </div>
 
       <!-- ===== screen layer: cut-away views, overlays, header, captions ===== -->
-      <div id="v-insert" class="view-host" data-composition-id="vins" data-composition-src="compositions/views/insert-phone.html" data-start="6.2" data-duration="3.8" data-track-index="1" data-width="1080" data-height="1920"></div>
-      <div id="o-steps" class="view-host" data-composition-id="steps" data-composition-src="compositions/overlays/steps.html" data-start="10" data-duration="5" data-track-index="2" data-width="1080" data-height="1920"></div>
+      <div id="v-insert" class="view-host" data-composition-id="vins" data-composition-src="compositions/views/insert-phone.html" data-start="6.2" data-duration="3.8" data-cue="frame:2" data-cue-end="frame:3" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="o-steps" class="view-host" data-composition-id="steps" data-composition-src="compositions/overlays/steps.html" data-start="10" data-duration="5" data-cue="frame:3" data-cue-end="frame:4" data-track-index="2" data-width="1080" data-height="1920"></div>
       <div id="scrim"></div>
-      <div id="f7" class="frame-host" data-composition-id="f7" data-composition-src="compositions/frames/tagline.html" data-start="15" data-duration="5" data-track-index="2" data-width="1080" data-height="640"></div>
+      <div id="f7" class="frame-host" data-composition-id="f7" data-composition-src="compositions/frames/tagline.html" data-start="15" data-duration="5" data-cue="frame:4" data-cue-end="frame:4@end" data-track-index="2" data-width="1080" data-height="640"></div>
 
       <div id="header">
         <span class="pill">EDUKASI</span>
@@ -491,6 +491,29 @@
     <script>
       (function () {
         /* CAST:BEGIN */ const CAST_LINES = []; /* CAST:END */
+        // Demo cue data so the starter runs before any voice exists: build-root.mjs replaces it from
+        // audio/timing.json, then lists every cue below whose line or word your script does not have.
+        /* CUES:BEGIN */ const CUE_DATA = {"lines":{"f1-1-dika":{"s":1.7,"e":3.3,"w":[["eh",1.7,1.9],["ini",1.95,2.1],["sebenarnya",2.15,2.7],["gimana",2.75,3.1],["sih",3.12,3.3]]},"f1-2-sari":{"s":3.6,"e":6.15,"w":[["sini",3.6,3.92],["aku",3.98,4.12],["tunjukkan",4.16,4.62],["langsung",4.68,5.1],["di",5.3,5.42],["hp",5.65,5.95],["kamu",6,6.15]]},"f2-1-sari":{"s":6.45,"e":9.4,"w":[["lihat",6.45,6.8],["bagian",6.85,7.3],["ini",7.35,7.55],["dulu",7.6,8],["sebelum",8.35,8.8],["lanjut",8.85,9.4]]},"f3-1-sari":{"s":10.25,"e":11.8,"w":[["ingat",10.25,10.55],["tiga",10.65,10.95],["langkah",11,11.4],["ini",11.45,11.8]]},"f3-2-dika":{"s":12.1,"e":14.4,"w":[["satu",12.1,12.5],["dua",12.8,13.15],["tiga",13.45,13.8],["siap",14,14.4]]},"f4-1-dika":{"s":15.25,"e":16.2,"w":[["oke",15.25,15.6],["paham",15.7,16.2]]},"f4-2-sari":{"s":16.5,"e":18.2,"w":[["mantap",16.5,16.95],["ayo",17.1,17.35],["coba",17.4,18.2]]}},"frames":{"1":[0,6.2],"2":[6.2,10],"3":[10,15],"4":[15,20]}};
+        const cue = (spec, offset = 0) => resolveCue(CUE_DATA, spec, offset);
+        function resolveCue(D, spec, offset) {
+          const m = /^\s*([^\s:@#]+)(?::([^\s@#]+))?(?:#(\d+))?(@end)?\s*([+-]\s*[\d.]+)?\s*$/.exec(String(spec));
+          if (!m) throw new Error(`cue "${spec}": expected line[:word][#n][@end] [+-seconds]`);
+          const [, id, word, nth, atEnd, off] = m;
+          const shift = (off ? parseFloat(off.replace(/\s+/g, "")) : 0) + (offset || 0);
+          if (id === "frame") {
+            const f = D.frames[word];
+            if (!f) throw new Error(`cue "${spec}": no frame ${word} (frames: ${Object.keys(D.frames).join(" ")})`);
+            return +(f[atEnd ? 1 : 0] + shift).toFixed(3);
+          }
+          const L = D.lines[id];
+          if (!L) throw new Error(`cue "${spec}": no line "${id}"`);
+          if (!word) return +((atEnd ? L.e : L.s) + shift).toFixed(3);
+          const key = word.toLowerCase().replace(/[^\p{L}\p{N}-]/gu, "");
+          const hits = L.w.filter((w) => w[0] === key);
+          const n = nth ? Number(nth) : 1;
+          if (hits.length < n) throw new Error(`cue "${spec}": "${key}" ${hits.length ? `is spoken ${hits.length}x` : "is not spoken"} in ${id} (${L.w.map((w) => w[0]).join(" ")})`);
+          return +(hits[n - 1][atEnd ? 2 : 1] + shift).toFixed(3);
+        } /* CUES:END */
         const TOTAL = parseFloat(document.getElementById("root").dataset.duration);
         const tl = gsap.timeline({ paused: true });
         const $ = (id) => document.getElementById(id);
@@ -502,16 +525,16 @@
         const B_FACE = [830, 1086];
         const HERO = [540, 1250];
         const SHOTS = [
-          // [time, duration (0 = cut), S, P (world), Q (screen), ease] -- retime every row to words in timing.json
+          // [time, duration (0 = cut), S, P (world), Q (screen), ease]; times are word cues (build-root.mjs)
           [0, 0, 1, [540, 960], [540, 960]],
           [0.2, 1.2, 1.06, [540, 1100], [540, 1100], "sine.inOut"], // establishing, slow push
-          [1.5, 0.8, 2.0, [320, 1130], [540, 780], "power2.inOut"], // push to MCU of A
-          [3.5, 0, 2.1, [B_FACE[0], 1110], [540, 760]], // cut to B
-          [5.6, 0, 2.4, A_PHONE, [540, 820]], // cut to A's phone
-          [5.65, 0.4, 7, A_PHONE, [540, 820], "power3.in"], // push through into the insert view
-          [10.0, 0, 2.6, HERO, [540, 760]], // CU of the topic prop
-          [10.6, 0.8, 1.5, [540, 1150], [540, 1000], "power2.inOut"], // two-shot while the steps land
-          [15.0, 1.2, 1.22, [540, 1150], [540, 1080], "power2.inOut"], // pull back for the tagline
+          [cue("f1-1-dika -0.2"), 0.8, 2.0, [320, 1130], [540, 780], "power2.inOut"], // push to MCU of A
+          [cue("f1-2-sari -0.1"), 0, 2.1, [B_FACE[0], 1110], [540, 760]], // cut to B
+          [cue("f1-2-sari:hp -0.05"), 0, 2.4, A_PHONE, [540, 820]], // "HP": cut to A's phone
+          [cue("f1-2-sari:hp"), 0.4, 7, A_PHONE, [540, 820], "power3.in"], // push through into the insert view
+          [cue("frame:3"), 0, 2.6, HERO, [540, 760]], // CU of the topic prop
+          [cue("f3-1-sari:tiga -0.05"), 0.8, 1.5, [540, 1150], [540, 1000], "power2.inOut"], // two-shot while the steps land
+          [cue("frame:4"), 1.2, 1.22, [540, 1150], [540, 1080], "power2.inOut"], // pull back for the tagline
         ];
         for (const [t, d, S, P, Q, ease] of SHOTS) {
           const c = cam(S, P, Q);
@@ -520,10 +543,10 @@
         }
         tl.set("#world-fx", { filter: "blur(0px)" }, 0);
         // Paper scrim and faded signage so the tagline reads over the wall.
-        tl.fromTo("#scrim", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 15.3);
-        tl.fromTo(["#w-sign", "#w-menu"], { opacity: 1 }, { opacity: 0, duration: 0.5, ease: "power2.out" }, 15.0);
+        tl.fromTo("#scrim", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, cue("frame:4 +0.3"));
+        tl.fromTo(["#w-sign", "#w-menu"], { opacity: 1 }, { opacity: 0, duration: 0.5, ease: "power2.out" }, cue("frame:4"));
         // Hide the world while a full-screen cut-away view covers it.
-        for (const [off, on] of [[6.2, 10.0]]) {
+        for (const [off, on] of [[cue("frame:2"), cue("frame:3")]]) {
           tl.set("#viewport", { autoAlpha: 0 }, off);
           tl.set("#viewport", { autoAlpha: 1 }, on);
         }
@@ -543,17 +566,17 @@
         const POSES = {
           dika: [
             [0, { brow: "neutral", rest: "closed", arm: "none" }],
-            [1.5, { brow: "worried", rest: "frown", arm: "phone" }],
-            [10.0, { brow: "neutral", rest: "closed", arm: "none" }],
-            [15.0, { brow: "up", rest: "smile" }],
-            [16.5, { arm: "up" }],
+            [cue("f1-1-dika -0.2"), { brow: "worried", rest: "frown", arm: "phone" }],
+            [cue("frame:3"), { brow: "neutral", rest: "closed", arm: "none" }],
+            [cue("frame:4"), { brow: "up", rest: "smile" }],
+            [cue("f4-2-sari"), { arm: "up" }],
           ],
           sari: [
             [0, { brow: "neutral", rest: "closed", arm: "none" }],
-            [3.5, { brow: "up", arm: "explain" }],
-            [6.0, { brow: "neutral" }],
-            [15.0, { rest: "smile", arm: "none" }],
-            [16.5, { brow: "up", arm: "up" }],
+            [cue("f1-2-sari -0.1"), { brow: "up", arm: "explain" }],
+            [cue("f1-2-sari:kamu"), { brow: "neutral" }],
+            [cue("frame:4"), { rest: "smile", arm: "none" }],
+            [cue("f4-2-sari"), { brow: "up", arm: "up" }],
           ],
         };
         const PARTS = {

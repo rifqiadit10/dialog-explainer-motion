@@ -2,10 +2,10 @@
 name: dialog-explainer-motion
 description: Membuat video explainer berbentuk percakapan dua karakter ilustrasi (ngobrol, tanya-jawab, sketsa dialog) dengan suara TTS, lip-sync, subtitle karaoke, dan kamera yang bergerak di dalam satu dunia, bukan slide. Dibangun di atas HyperFrames (HTML + GSAP) dan dirender ke MP4, biasanya 9:16 untuk Reels/TikTok/Shorts. Gunakan skill ini setiap kali user meminta video edukasi, sosialisasi, iklan layanan masyarakat, atau penjelasan produk yang berbentuk dua orang/karakter ngobrol, "karakter animasi yang bicara", "video percakapan", "dua tokoh menjelaskan", atau ingin membuat video seperti contoh QRIS palsu, bahkan bila kata "dialog" tidak disebut. Juga gunakan untuk memperbaiki video dialog yang terasa statis atau seperti slide.
 license: MIT
-compatibility: Agent apa pun yang bisa menjalankan shell dan membaca file. Butuh Node 18+, ffmpeg, skill HyperFrames (npx hyperframes skills update general-video), dan HeyGen CLI yang sudah login untuk TTS (macOS/Linux langsung, Windows lewat WSL).
+compatibility: Agent apa pun yang bisa menjalankan shell dan membaca file. Butuh Node 18+, ffmpeg, skill HyperFrames (npx hyperframes skills update general-video), dan suara dengan cap waktu kata, dari HeyGen CLI atau audio apa pun yang diselaraskan dengan whisper lokal (hyperframes transcribe). macOS/Linux langsung, Windows lewat WSL untuk HeyGen dan whisper.
 metadata:
   author: Rifqi Aditya
-  version: "1.0.0"
+  version: "1.1.0"
   homepage: https://github.com/rifqiadit10/dialog-explainer-motion
 ---
 
@@ -32,9 +32,10 @@ folder tempat skill ini terpasang.
   berganti karena kamera atau dunia bergerak, dan benda yang diceritakan (stand QRIS, papan
   harga, layar mesin kasir) harus ada di dunia itu. Jangan biarkan satu sudut pandang dipakai
   lebih dari dua adegan berturut-turut.
-- **Suara menentukan waktu.** Buat TTS lebih dulu, lalu turunkan semua waktu (frame, shot
-  kamera, pose, kemunculan grafik) dari timestamp kata. Kalau waktu ditebak, gerak kamera
-  dan grafik tidak akan pas dengan kata yang diucapkan.
+- **Suara menentukan waktu.** Buat suara lebih dulu, lalu turunkan semua waktu (frame, shot
+  kamera, pose, kemunculan grafik) dari timestamp kata. Tulis waktu sebagai cue kata
+  (`cue("f2-1-sari:merchant")`), bukan detik: take suara baru, voice lain, atau jeda yang
+  berubah lalu tidak merusak koreografi. Kalau waktu ditebak, kamera tidak pas dengan kata.
 - **Fakta dulu, desain belakangan.** Video edukasi publik yang salah fakta merugikan penonton.
   Setiap klaim harus punya sumber resmi atau media besar di `SOURCES.md`; klaim yang tidak bisa
   diverifikasi dibuang dari skrip, bukan diperhalus.
@@ -49,7 +50,9 @@ folder tempat skill ini terpasang.
 |---|---|
 | Skill HyperFrames (`npx hyperframes skills update general-video`) | Kontrak composition, check, snapshot, render. Baca skill `hyperframes` dan `hyperframes-core` sebelum menulis HTML. |
 | Node 18+, ffmpeg | Script di `scripts/`, pengukuran audio |
-| HeyGen CLI, login OAuth oleh user | TTS dengan timestamp kata, katalog musik. macOS/Linux langsung; Windows lewat WSL (`HEYGEN_WSL=1`). Login dilakukan user sendiri. |
+| Suara dengan timestamp kata, salah satu: | |
+| - HeyGen CLI, login OAuth oleh user | `scripts/tts.mjs`: TTS + timestamp sekaligus, juga katalog musik. macOS/Linux langsung; Windows lewat WSL (`HEYGEN_WSL=1`). |
+| - Audio dari mana saja (TTS lain, rekaman voice-over) | `scripts/align.mjs`: membaca alignment ElevenLabs, file kata JSON dari aligner apa pun, atau menjalankan whisper lokal (`hyperframes transcribe`). |
 | `@hyperframes/core` (devDependency project) | `hyperframes-audio/scripts/carve.mjs` untuk karve musik |
 | `@hyperframes/producer` (devDependency project) | `hyperframes-animation/scripts/animation-map.mjs` |
 
@@ -68,20 +71,26 @@ Skill ini mengisi detail di tiap langkah.
    kira-kira 130 kata termasuk jeda. Struktur yang terbukti: hook rasa rugi, pesan inti di beat
    kedua, mekanisme, bukti nyata, cara mengecek, jalan keluar, tagline. Tulis di `audio/lines.json`
    (format di `references/audio.md`), satu entri per giliran bicara dengan nomor `frame`.
-4. **Pilih suara.** Buat sampel 2-3 pasangan voice dengan baris pembuka asli, samakan loudness,
-   biarkan user memilih. Ukur tempo sampel untuk memperkirakan durasi akhir.
-5. **TTS dan timing.** `node <skill>/scripts/tts.mjs audio/lines.json audio/voice`, lalu
-   `node <skill>/scripts/timing.mjs audio/lines.json audio/voice audio/timing.json`.
+4. **Pilih suara.** Tanyakan sumber suara (HeyGen, TTS lain, atau rekaman). Buat sampel 2-3
+   pasangan voice dengan baris pembuka asli, samakan loudness, biarkan user memilih. Ukur tempo
+   sampel untuk memperkirakan durasi akhir.
+5. **Suara dan timing.** HeyGen: `node <skill>/scripts/tts.mjs audio/lines.json audio/voice`.
+   Sumber lain: taruh `audio/voice/<id>.mp3` per baris, lalu
+   `node <skill>/scripts/align.mjs audio/lines.json audio/voice --model small --language id`.
+   Lalu `node <skill>/scripts/timing.mjs audio/lines.json audio/voice audio/timing.json` dan
+   `node <skill>/scripts/build-root.mjs --words` untuk daftar kata yang bisa dijadikan cue.
 6. **Storyboard dan shot list.** Satu frame per beat di `STORYBOARD.md`, masing-masing dengan
-   shot kamera yang dikunci ke kata (`references/kamera.md`). Bila `storyboard: yes`, buat sketsa
-   statis dan minta persetujuan sebelum animasi.
+   shot kamera yang dikunci ke kata, ditulis sebagai cue (`references/kamera.md`). Bila
+   `storyboard: yes`, buat sketsa statis dan minta persetujuan sebelum animasi.
 7. **Project.** `npx hyperframes init videos/<nama> --non-interactive --example=blank --skill=general-video`,
    lalu salin isi `assets/starter/` (atau `examples/qris-palsu/` bila topiknya mirip) ke project.
    Bangun dunia sesuai topik: papan, benda yang akan disorot, latar.
-8. **Pemeran.** Pakai atau ubah karakter bawaan, susun `POSES` per kata (`references/pemeran.md`).
-9. **Kamera, view, overlay.** Isi `SHOTS` dari `timing.json`; buat view potong dan overlay di
+8. **Pemeran.** Pakai atau ubah karakter bawaan, susun `POSES` dengan cue kata (`references/pemeran.md`).
+9. **Kamera, view, overlay.** Isi `SHOTS` dengan cue kata (ganti semua cue demo di starter); klip
+   view/overlay memakai `data-cue` dan `data-cue-end`. Buat view potong dan overlay di
    `compositions/`. Sembunyikan `#viewport` saat view penuh tampil.
-10. **Suntik dialog.** `node <skill>/scripts/build-root.mjs` (audio, subtitle, data lip-sync).
+10. **Suntik dialog.** `node <skill>/scripts/build-root.mjs` (audio, subtitle, data lip-sync, data
+    cue). Build berhenti tanpa menulis file bila ada cue yang baris atau katanya tidak ada.
     Bila ada musik: isi `music` di `lines.json`, jalankan ulang build-root, lalu karve
     (`references/audio.md`).
 11. **Verifikasi.** `npx hyperframes check .` sampai 0 error (layout dan kontras ikut), snapshot di
@@ -121,15 +130,17 @@ pemeran, dan driver tetap sama; yang berubah hanya isi `#world-fx`.
 
 | File | Baca saat |
 |---|---|
-| `references/kamera.md` | Menyusun shot list, rumus rig, peta koordinat dunia, view/overlay, rack focus |
+| `references/kamera.md` | Menyusun shot list, cue kata, rumus rig, peta koordinat dunia, view/overlay, rack focus |
 | `references/pemeran.md` | Memakai, mengubah, atau membuat karakter; format `POSES`; driver lip-sync |
-| `references/audio.md` | Format `lines.json`, memilih voice, TTS lewat WSL, timing, musik dan karve |
+| `references/audio.md` | Format `lines.json`, memilih voice, HeyGen lewat WSL, audio dari sumber lain (`align.mjs`), timing, musik dan karve |
 | `references/subtitle.md` | Aturan potongan subtitle, kata kunci, gaya karaoke |
 | `references/fakta.md` | Riset dan verifikasi fakta, format `SOURCES.md`, klaim yang dilarang |
 | `references/jebakan.md` | Gejala aneh saat build atau check (pivot salah, teks bertumpuk, path terlalu panjang) |
 
 ## Yang paling sering salah
 
+- Menulis detik untuk shot dan pose: begitu suara dibuat ulang, kamera meleset dari kata. Pakai cue.
+- Model whisper `*.en` untuk audio non-Inggris: kata diterjemahkan, `align.mjs` memberi tanda.
 - Lupa menyembunyikan dunia di belakang view penuh: `check` melaporkan teks bertumpuk.
 - Class objek dunia dan class kata subtitle bertabrakan (subtitle jadi menumpuk).
 - Teks di dunia masuk frame dan menabrak header saat kamera mundur: pudarkan dulu.

@@ -14,6 +14,10 @@
 | `check`: `clip_media_fit` | `data-duration` audio lebih panjang dari file | Batasi dengan durasi file (sudah di build-root) |
 | Lingkaran pulse/elemen terlihat sejak detik 0 | `fromTo` dengan `immediateRender` menulis nilai awal opacity > 0 | Pisahkan tween opacity: `fromTo(opacity 0 → x)` di waktu muncul |
 | Snapshot di Windows gagal `ENOENT ... mkdtemp` | Path melewati batas 260 karakter | `npx hyperframes snapshot . -o snaps ...` (folder pendek di project) |
+| `build-root`: `cue errors (index.html not written)` | Cue menyebut baris atau kata yang tidak ada di `timing.json` (skrip berubah, cue demo starter belum diganti) | Pilih kata dari `build-root.mjs --words`, tulis ulang cue-nya |
+| Shot dan pose meleset setelah suara dibuat ulang | Waktu ditulis sebagai detik | Tulis sebagai cue kata |
+| `align.mjs` menandai banyak baris `check this line` | Model whisper `*.en` menerjemahkan audio non-Inggris, atau `--language` salah | `--model small --language <kode>` |
+| `align.mjs`: `hyperframes transcribe failed` | whisper.cpp belum ada dan tidak bisa dibangun (tanpa cmake) | Di WSL/Linux `uv tool install cmake`, atau `HYPERFRAMES_WHISPER_PATH` ke `whisper-cli` |
 | HeyGen CLI tidak jalan di Windows | Belum ada build Windows | Pasang di WSL; `HEYGEN_WSL=1` untuk `tts.mjs` |
 | TTS membaca singkatan dengan aneh | Ejaan tulisan dikirim apa adanya | Isi `spoken` di `lines.json` dengan ejaan fonetik resmi |
 | Durasi jauh melewati target | Tempo voice lebih lambat dari perkiraan | Ukur tempo dari sampel, ringkas skrip, atau `speed` 1,05-1,1 |

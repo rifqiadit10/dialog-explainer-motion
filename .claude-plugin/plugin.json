@@ -1,7 +1,7 @@
 {
   "name": "dialog-explainer-motion",
   "displayName": "Dialog Explainer Motion",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Two-character dialogue explainer videos that move like film, not slides: one world, a camera locked to the spoken words, TTS voices with lip-sync, karaoke captions, and a carved music bed. Built on HyperFrames, rendered to MP4.",
   "author": { "name": "Rifqi Aditya", "url": "https://github.com/rifqiadit10" },
   "homepage": "https://github.com/rifqiadit10/dialog-explainer-motion",

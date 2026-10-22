@@ -12,7 +12,8 @@ y = Q.y - S * P.y
 ```
 
 Helper di starter: `const cam = (S, P, Q) => ({ scale: S, x: Q[0] - S*P[0], y: Q[1] - S*P[1] })`.
-Tiap baris `SHOTS` adalah `[waktu, durasi (0 = cut), S, P, Q, ease]`. Cut memakai `tl.set`,
+Tiap baris `SHOTS` adalah `[waktu, durasi (0 = cut), S, P, Q, ease]`, dengan waktu berupa cue kata
+(bagian berikut). Cut memakai `tl.set`,
 gerak memakai `tl.to` pada elemen yang sama. Header, subtitle, view, dan overlay ada di luar rig,
 jadi tidak ikut terskala.
 
@@ -49,11 +50,40 @@ Q yang aman untuk subjek di 9:16: x 540, y 620-820. Subjek di atas y 1378 supaya
 | Pull back | Penutup, tagline | ke S ~1.22 dalam 1,2-1,4 detik |
 | POV dari balik bahu | Membandingkan benda di tangan dengan benda di dunia | overlay HP besar di depan, dunia di belakang, rack focus |
 
-Mulai gerak sekitar 0,2-0,3 detik sebelum kata yang memicunya, supaya kamera tiba bersamaan
-dengan kata. Ambil waktu kata dari `audio/timing.json` (`lines[].words[].start`).
+Mulai gerak sekitar 0,2-0,3 detik sebelum kata yang memicunya (cue dengan offset negatif),
+supaya kamera tiba bersamaan dengan kata.
 
 Aturan ritme: jangan pakai sudut yang sama lebih dari dua adegan berturut-turut, dan hold yang
 panjang tanpa aksi objek butuh perubahan ukuran shot (bukan sekadar napas kamera).
+
+## Waktu: cue kata, bukan detik
+
+Tulis waktu shot, pose, tween dunia, dan klip view/overlay sebagai cue kata. `build-root.mjs`
+menyuntik fungsi `cue()` beserta data kata dari `audio/timing.json` ke penanda
+`/* CUES:BEGIN */ ... /* CUES:END */` (letakkan sebelum cue pertama dipakai). Saat suara dibuat
+ulang (take baru, voice lain, jeda berubah), semuanya ikut bergeser tanpa diedit.
+
+| Tulis | Artinya |
+|---|---|
+| `cue("f2-1-sari:merchant")` | awal kata "merchant" di baris `f2-1-sari` (bentuk tulisan; huruf besar dan tanda baca diabaikan) |
+| `cue("f5-2-sari:nama#2")` | kemunculan kedua "nama" di baris itu |
+| `cue("f5-2-sari:merchant@end")` | akhir kata |
+| `cue("f6-2-sari")`, `cue("f6-2-sari@end")` | awal dan akhir ucapan satu baris |
+| `cue("frame:3")`, `cue("frame:3@end")` | jendela frame dari `timing.json` |
+| `cue("f1-1-dika:bayar -0.28")` | offset dalam detik, dipisah spasi; `cue(spec, -0.28)` sama saja |
+
+Klip di root memakai atribut: `data-cue="frame:2 +0.3"` menulis `data-start`, dan
+`data-cue-end="frame:3"` menulis `data-duration`. Rangkaian aksi yang rapat cukup memakai satu cue
+lalu aritmetika biasa: `const SLAP = cue("f3-2-sari:nempelin +0.05")`, kemudian `SLAP + 0.12`.
+
+`node <skill>/scripts/build-root.mjs --words` mencetak kata yang bisa dipakai untuk tiap baris dan
+frame. Cue yang baris atau katanya tidak ada membuat build berhenti tanpa menulis file, lengkap
+dengan daftar kata baris itu. Starter membawa data cue demo; setelah build pertama dengan suara
+sendiri, semua cue demo yang tidak cocok muncul di daftar itu dan harus diganti.
+
+Sub-composition (view/overlay) punya timeline sendiri: ketukan di dalamnya tetap detik relatif
+terhadap awal klip. Kalau ketukan itu harus jatuh tepat di kata, gerakkan elemennya dari root atau
+pecah klipnya.
 
 ## View potong dan overlay
 
