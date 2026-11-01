@@ -7,12 +7,12 @@
       "name": "dialog-explainer-motion",
       "source": "./",
       "displayName": "Dialog Explainer Motion",
-      "description": "Two illustrated characters talk while the camera works inside one world. TTS voices with lip-sync, karaoke captions, verified facts, rendered to MP4 with HyperFrames.",
-      "version": "1.1.0",
+      "description": "Two illustrated characters talk while the camera works inside one world, in flat vector or isometric 3D. TTS voices with lip-sync, karaoke captions, verified facts, rendered to MP4 with HyperFrames.",
+      "version": "1.2.0",
       "author": { "name": "Rifqi Aditya", "url": "https://github.com/rifqiadit10" },
       "homepage": "https://github.com/rifqiadit10/dialog-explainer-motion",
       "license": "MIT",
-      "keywords": ["video", "explainer", "dialogue", "lip-sync", "hyperframes"]
+      "keywords": ["video", "explainer", "dialogue", "lip-sync", "hyperframes", "threejs", "isometric"]
     }
   ]
 }

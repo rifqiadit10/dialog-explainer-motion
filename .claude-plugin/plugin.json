@@ -1,11 +1,11 @@
 {
   "name": "dialog-explainer-motion",
   "displayName": "Dialog Explainer Motion",
-  "version": "1.1.0",
-  "description": "Two-character dialogue explainer videos that move like film, not slides: one world, a camera locked to the spoken words, TTS voices with lip-sync, karaoke captions, and a carved music bed. Built on HyperFrames, rendered to MP4.",
+  "version": "1.2.0",
+  "description": "Two-character dialogue explainer videos that move like film, not slides: one world, a camera locked to the spoken words, TTS voices with lip-sync, karaoke captions, and a carved music bed, in flat vector or isometric 3D. Built on HyperFrames, rendered to MP4.",
   "author": { "name": "Rifqi Aditya", "url": "https://github.com/rifqiadit10" },
   "homepage": "https://github.com/rifqiadit10/dialog-explainer-motion",
   "repository": "https://github.com/rifqiadit10/dialog-explainer-motion",
   "license": "MIT",
-  "keywords": ["video", "explainer", "dialogue", "character-animation", "lip-sync", "captions", "hyperframes", "motion-graphics"]
+  "keywords": ["video", "explainer", "dialogue", "character-animation", "lip-sync", "captions", "hyperframes", "motion-graphics", "threejs", "isometric"]
 }

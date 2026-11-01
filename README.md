@@ -7,7 +7,7 @@ Two illustrated characters talk; the camera works inside one world, cutting to w
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-3fa34d?style=flat-square)](LICENSE)
 [![Format: Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-1c2a4a?style=flat-square)](#install)
-[![Version](https://img.shields.io/badge/version-1.1.0-2f6fd6?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.2.0-2f6fd6?style=flat-square)](CHANGELOG.md)
 [![Works with](https://img.shields.io/badge/works%20with-any%20Agent%20Skills%20agent-7a5af5?style=flat-square)](#install)
 
 <img src="docs/gallery/hero.jpg" alt="Eight frames from the example video: establishing shot of a coffee shop, push-in on a worried customer holding his phone, an insert of the payment screen, a hand slapping a fake QR sticker over the shop's QRIS stand, a map of Java with case pins, a rack focus from the phone to the shop sign, the menu price ringed against the phone's total, and the closing tagline with a high five" width="100%">
@@ -29,11 +29,14 @@ composition and rendered to MP4:
   a money-flow diagram, a map with case pins, a checklist, steps arriving as notifications.
 - **Karaoke captions** placed above the app UI safe zone, with keywords highlighted.
 - **Fact discipline.** The workflow requires verified sources for every claim and keeps a
-  `SOURCES.md` with the video.
+  `SOURCES.md` with the video. Source cards on screen quote only what the source says.
+- **Two styles.** Flat vector characters with a 2D camera rig, or an isometric 3D world
+  (Three.js) with low-poly characters, a flying camera, 3D labels, and panels over a blurred scene.
+  The 3D style is documented in `references/isometrik.md`; no example project ships for it.
 
 The included example (`examples/qris-palsu`) is a 64-second Indonesian public-education piece on
-fake QRIS payment stickers. The skill's instructions are written in Indonesian; the videos can be
-in any language your TTS voices support.
+fake QRIS payment stickers in the vector style. The skill's instructions are written in Indonesian;
+the videos can be in any language your TTS voices support.
 
 ## Gallery
 
@@ -52,16 +55,20 @@ in any language your TTS voices support.
 </tr>
 </table>
 
+
 ## Requirements
 
 | To... | You need |
 |---|---|
 | Build and render | Any coding agent that can run shell commands and read files, Node 18+, ffmpeg, and the HyperFrames skills: `npx hyperframes skills update general-video` |
-| Voices with word timestamps | Either the [HeyGen CLI](https://developers.heygen.com/cli), signed in with your own account (`scripts/tts.mjs`; on Windows, install it in WSL and set `HEYGEN_WSL=1`), or audio from anywhere (another TTS, a recorded voice-over) plus `scripts/align.mjs`, which reads ElevenLabs alignment, any word-timestamp JSON, or runs local whisper through `hyperframes transcribe`. |
+| Voices with word timestamps | One of: the [HeyGen CLI](https://developers.heygen.com/cli), signed in with your own account (`scripts/tts.mjs`; on Windows, install it in WSL and set `HEYGEN_WSL=1`); the [ElevenLabs CLI](https://github.com/elevenlabs/cli) with your own API key in the environment (`scripts/tts-el.mjs`, per line with character timing; library voices over the API need a paid plan); one ElevenLabs dialogue take from the web UI, split per line by `scripts/split-take.mjs`; or audio from anywhere plus `scripts/align.mjs`, which reads ElevenLabs alignment, any word-timestamp JSON, or runs local whisper (`hyperframes transcribe` or `whisper-cli`). |
+| The isometric style | Nothing extra: Three.js 0.181.2 loads from jsDelivr inside the composition. `scripts/beats.mjs` and `scripts/audio-tags.mjs` build it. |
 | Carve the music under the voices | `@hyperframes/core` as a devDependency of the video project |
 | Audit the choreography | `@hyperframes/producer` as a devDependency of the video project |
 
 Voices and music are generated or licensed under **your** account. None are shipped in this repo.
+Free TTS plans are usually non-commercial (ElevenLabs Free: non-commercial with attribution);
+check the licence before publishing brand content.
 
 ## Install
 
@@ -147,18 +154,35 @@ poses, and clips are written as word cues instead of seconds:
 `build-root.mjs` resolves and checks every cue against `audio/timing.json`, so a new voice take,
 another voice, or different pauses move the whole choreography with it.
 
+The isometric style does the same with beats: `beats.json` splits each line into caption beats,
+`scripts/beats.mjs` checks every beat's words against the timed words, and the camera, cast, and
+overlays use `B(n)` and `W(n, "word")`:
+
+```js
+shot(B(7).in, 0.6, SARI),                                  // beat 7 starts: cut to the speaker
+fadeIn(W(11, "langkah") - 0.05, "#step-1", { y: 40 });     // the card lands on the word that names it
+```
+
+One multi-speaker take keeps the turn-taking natural: `split-take.mjs` cuts it per line in the
+middle of each pause and lays the clips back at their original spacing, with room added where the
+picture needs it (a sound effect before the first line, a pause before the last).
+
 ## Repository layout
 
 ```
 SKILL.md                    workflow and rules (read by the agent, Indonesian)
-references/                 camera, cast, audio, captions, facts, known pitfalls
+references/                 camera, cast, audio, captions, facts, isometric 3D, known pitfalls
 scripts/
   tts.mjs                   HeyGen TTS with word timestamps (WSL-aware)
+  tts-el.mjs                ElevenLabs CLI TTS with character timing, per line
   align.mjs                 word timestamps for audio from any source (ElevenLabs, JSON, local whisper)
+  split-take.mjs            one multi-speaker take -> per-line clips + timing.json
   timing.mjs                lays lines on one timeline, derives frame windows
-  build-root.mjs            injects audio, caption cards, lip-sync data, and word cues
+  build-root.mjs            vector style: injects audio, caption cards, lip-sync data, and word cues
+  beats.mjs                 isometric style: beats.json + timing -> caption beats in index.html
+  audio-tags.mjs            isometric style: voice clips, word-cued sound effects, music bed
 assets/starter/             runnable 20 s demo: camera rig, world, cast, one view/overlay/tagline
-examples/qris-palsu/        full reference project (code, script, storyboard, sources; no media)
+examples/qris-palsu/        vector reference project (code, script, storyboard, sources; no media)
 docs/gallery/               stills from the example render
 .claude-plugin/             Claude Code plugin + marketplace manifests
 ```
@@ -171,6 +195,9 @@ docs/gallery/               stills from the example render
   not used; names are written as text.
 - The example's facts were checked against Bank Indonesia, OJK, and major Indonesian media on
   2026-10-21; see `examples/qris-palsu/SOURCES.md`. Re-verify before publishing anything new.
+- The isometric style takes its branding from `beats.json` `"series"`.
+- The story advice (a real process with a turn, one hero throughout, an ending that repeats the
+  opening changed) follows the story grammar in [cth9191/animate](https://github.com/cth9191/animate) (MIT).
 
 ## Credits
 

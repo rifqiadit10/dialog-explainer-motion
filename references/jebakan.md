@@ -22,3 +22,16 @@
 | TTS membaca singkatan dengan aneh | Ejaan tulisan dikirim apa adanya | Isi `spoken` di `lines.json` dengan ejaan fonetik resmi |
 | Durasi jauh melewati target | Tempo voice lebih lambat dari perkiraan | Ukur tempo dari sampel, ringkas skrip, atau `speed` 1,05-1,1 |
 | Heredoc panjang gagal di shell (`unexpected EOF`) | Kutipan di dalam skrip panjang | Tulis skrip ke file lalu jalankan dengan node |
+| `hyperframes transcribe` membalas `whisper_unavailable` | Windows tanpa build whisper.cpp | Jalankan `whisper-cli` langsung (`references/audio.md`, catatan whisper) lalu `<id>.words.json` |
+| HyperFrames di WSL menolak jalan (`requires Node.js >= 22`) | Node WSL lebih tua dari Node Windows | Pakai Node 22 di WSL, atau panggil `whisper-cli` langsung tanpa CLI HyperFrames |
+| Perintah `wsl` dari Git Bash kehilangan path (`C:Users...`, `/tmp` jadi path Windows) | Git Bash mengonversi path dan memakan backslash | Panggil `wsl` dari PowerShell dengan path `/mnt/c/...` |
+| ElevenLabs API: `paid_plan_required` | Plan Free tidak boleh memakai voice library lewat API | Upgrade, pakai voice bawaan/Voice Design, atau mode dialog di web UI + `split-take.mjs` |
+| ElevenLabs CLI: `Invalid --params JSON` di PowerShell | Kutip ganda di-escape dengan backslash | `--params '{"language":"id"}'` (kutip tunggal, tanpa backslash) |
+| Mix akhir sekitar -22 LUFS | Take TTS pelan (sekitar -25 LUFS) | Kompres ringan + `loudnorm=I=-16` pada take sebelum dipotong per baris |
+| Musik berhenti sebelum video selesai | Trek lebih pendek dari komposisi | Sambung bagian tengah dengan `acrossfade`, fade-out sendiri (`references/audio.md`) |
+| `carve.mjs` gagal memuat `@hyperframes/core` | Paket belum terpasang di project | `npm i -D @hyperframes/core@<versi pin CLI>` di folder video |
+| Isometrik: label 3D meleset dari objeknya | Matriks dunia belum diperbarui sebelum proyeksi | `scene.updateMatrixWorld()` sebelum `project(camera)` |
+| Isometrik: garis-garis gelap di jilbab atau rambut | Kain `DoubleSide` tipis membayangi dirinya | `receiveShadow = false` pada cangkang kain, tetap `castShadow` |
+| Isometrik: papan nama kedai menabrak header | Papan jatuh di y 300-520, di bawah gradien pudar | Naikkan kamera supaya papan masuk area pudar, atau atur gradien `#fade` |
+| Isometrik: wajah memenuhi layar dan terasa menyeramkan | Close-up terlalu rapat | Pakai framing DIKA/SARI di `references/isometrik.md` |
+| Isometrik: elemen yang muncul kedua kali hilang saat di-scrub | `fromTo` kedua menulis nilai awal saat dibuat | `immediateRender: false` pada kemunculan kedua |

@@ -66,3 +66,8 @@ terus. Semua dihitung dari waktu dalam satu driver `onUpdate`, jadi deterministi
   di `lines.json` (huruf kecil di id, chip subtitle memakai huruf besar).
 - Setelah mengubah karakter, ambil snapshot close-up wajah (crop dari frame MCU) dan bandingkan
   sebelum/sesudah.
+- Wajah harus terasa ramah, terutama di 3D: mata bulat kecil tanpa kilau, tanpa hidung, mulut
+  datar, dan close-up yang terlalu rapat dinilai user "serem" pada versi pertama varian isometrik.
+  Yang memperbaikinya: mata oval dengan titik kilau putih, hidung kecil, pipi, senyum saat diam yang
+  berganti mulut terbuka saat bicara, kepala sedikit lebih besar, dan framing close-up yang lebih
+  longgar. Pemeran 3D dijelaskan di `references/isometrik.md`.
